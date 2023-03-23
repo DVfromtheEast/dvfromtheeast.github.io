@@ -89,17 +89,14 @@ img {
   padding: 0 16px;
 }
 /* button */
-button {
+.b {
   text-align: center;
-  font-style: normal;
   font-family: 'Be Vietnam Pro', sans-serif;
   font-weight: 600;
   font-size: 1rem;
   line-height: 20px;
   letter-spacing: 0.5px;
   flex: none;
-  order: 0;
-  flex-grow: 0;
   color: var(--onprimary);
   background-color: var(--primary);
   border-radius: 8px;
@@ -107,6 +104,24 @@ button {
   gap: 8px;
   cursor: pointer;
   border: none;
+  width: fit-content;
+}
+.b--outlined {
+  text-align: center;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 20px;
+  letter-spacing: 0.5px;
+  flex: none;
+  color: var(--onprimary);
+  border: 1px solid var(--onprimary);
+  border-radius: 8px;
+  padding: 0.875rem 1.5rem;
+  background: none;
+  gap: 8px;
+  cursor: pointer;
+  width: fit-content;
 }
 button:hover {
   transform: scale(0.98);
@@ -703,6 +718,7 @@ footer {
 }
 .tag {
   display: inline-flex;
+  align-items: center;
 }
 .tag p {
   font-size: 0.75rem;
@@ -719,6 +735,11 @@ footer {
   pointer-events: none;
   -webkit-touch-callout: none;
 }
+.card button {
+  display: none;
+  z-index: 3;
+}
+
 /* Branding */
 .brand_list {
   width: 100%;
@@ -1117,6 +1138,7 @@ textarea::placeholder {
     gap: 2rem;
   }
   .card {
+    position: relative;
     flex-direction: row;
     transition: var(--smooth);
   }
@@ -1147,17 +1169,38 @@ textarea::placeholder {
     height: 100%;
     transition: var(--smooth);
   }
-  .card:hover {
-    transform: scale(0.99);
-    transition: var(--smooth);
-  }
-  .card:hover .card_img {
-    transform: scale(1.05);
-    transition: var(--smooth);
-  }
   .tag p {
     font-size: 1rem;
+    transition: 0.2s ease-in;
   }
+  .card button {
+    position: absolute;
+    opacity: 100;
+    display: inline-block;
+    bottom: 3rem;
+    opacity: 0;
+    transition: 0.2s ease-in;
+  }
+  .card button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transition: var(--smooth);
+  }
+  .card:hover {
+    transform: scale(0.98);
+    transition: var(--smooth);
+  }
+  .card:hover button {
+    display: inline-block;
+    opacity: 100;
+    transition: 0.3s ease-out;
+    transform: translateY(-1.25rem);
+  }
+  .card:hover .tag p {
+    opacity: 0;
+    transition: 0.15s ease-out;
+    transform: translateX(8rem);
+  }
+
   /* Branding */
   .brand_list {
     width: 100%;
