@@ -22,6 +22,8 @@ var layer1 = document.getElementById('layer1');
 var layer2 = document.getElementById('layer2');
 var layer3 = document.getElementById('layer3');
 var layer4 = document.getElementById('layer4');
+var sun = document.querySelector('.sun');
+var moon = document.querySelector('.moon');
 
 if (localStorage.getItem('theme') == null) {
   localStorage.setItem('theme', 'dark');
@@ -33,6 +35,9 @@ if (localData == 'dark') {
   layer2.src = './images/Banner/night2.png';
   layer3.src = './images/Banner/night3.png';
   layer4.src = './images/Banner/night4.png';
+  sun.classList.add('sun');
+  sun.classList.remove('sun_open');
+  moon.classList.add('moon');
   document.body.classList.remove('light-theme');
 } else if (localData == 'light') {
   layer.src = './images/Banner/day.png';
@@ -40,6 +45,8 @@ if (localData == 'dark') {
   layer2.src = './images/Banner/day2.png';
   layer3.src = './images/Banner/day3.png';
   layer4.src = './images/Banner/day4.png';
+  sun.classList.add('sun', 'sun_open');
+  moon.classList.add('moon', 'moon_close');
   document.body.classList.add('light-theme');
 }
 
@@ -51,6 +58,8 @@ slider.onclick = function () {
     layer2.src = './images/Banner/day2.png';
     layer3.src = './images/Banner/day3.png';
     layer4.src = './images/Banner/day4.png';
+    sun.classList.add('sun', 'sun_open');
+    moon.classList.add('moon', 'moon_close');
     localStorage.setItem('theme', 'light');
   } else {
     layer.src = './images/Banner/night.png';
@@ -58,6 +67,10 @@ slider.onclick = function () {
     layer2.src = './images/Banner/night2.png';
     layer3.src = './images/Banner/night3.png';
     layer4.src = './images/Banner/night4.png';
+    sun.classList.add('sun');
+    sun.classList.remove('sun_open');
+    moon.classList.add('moon');
+    moon.classList.remove('moon_close');
     localStorage.setItem('theme', 'dark');
   }
 };
