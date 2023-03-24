@@ -161,7 +161,7 @@ header {
   width: 80%;
   height: 100%;
   background-color: var(--surface);
-  z-index: 5;
+  z-index: 10;
   transition: all 0.3s ease-in-out;
   transform: translateX(100%);
   opacity: 1;
@@ -332,7 +332,7 @@ input:checked + .slider:before {
   background-color: var(--onbg);
   transition: var(--smooth);
   position: relative;
-  z-index: 6;
+  z-index: 11;
 }
 .navbar_icon2:before,
 .navbar_icon2:after {
@@ -391,6 +391,7 @@ input:checked + .slider:before {
   display: flex;
   pointer-events: none;
   -webkit-touch-callout: none;
+  transition: var(--smooth);
 }
 .layer {
   z-index: 0;
@@ -428,25 +429,37 @@ input:checked + .slider:before {
 }
 .moon {
   position: absolute;
-  width: 12%;
-  right: 26%;
-  top: 16%;
+  opacity: 1;
+  width: 14%;
+  right: 24%;
+  top: 14%;
   z-index: 0;
+  transition: all 0.4s ease-in-out;
 }
-/* .sun {
-  position: absolute;
-  width: 16%;
-  left: 4%;
-  top: 10%;
+.moon.moon_close {
+  opacity: 0;
+  transform: scale(0.5);
+  right: 26%;
+  top: 50%;
   z-index: 0;
-} */
+  transition: all 0.4s ease-in-out;
+}
 .sun {
   position: absolute;
   opacity: 0;
   width: 4%;
-  left: 4%;
+  left: 6%;
   top: 44%;
+  transform: translateY(0);
   z-index: 0;
+  transition: all 0.4s ease-in-out;
+}
+.sun.sun_open {
+  opacity: 1;
+  left: 12%;
+  top: 10%;
+  transform: scale(5);
+  transition: all 0.4s ease-in-out;
 }
 .cloud1 {
   position: absolute;
