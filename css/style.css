@@ -398,6 +398,7 @@ input:checked + .slider:before {
   z-index: 0;
   width: 100%;
   height: 100%;
+  transition: all 0.1s ease-in-out;
 }
 .layer1 {
   position: absolute;
@@ -405,7 +406,7 @@ input:checked + .slider:before {
   width: 62%;
   left: 10%;
   bottom: 29%;
-  transition: var(--smooth);
+  transition: all 0.1s ease-in-out;
 }
 .layer2 {
   position: absolute;
@@ -413,6 +414,7 @@ input:checked + .slider:before {
   width: 26%;
   right: 12%;
   bottom: 30%;
+  transition: all 0.1s ease-in-out;
 }
 .layer3 {
   position: absolute;
@@ -424,10 +426,12 @@ input:checked + .slider:before {
 .illustration:hover .layer1 {
   bottom: 32%;
   transition: var(--smooth);
+  transition-delay: 0.4s;
 }
 .illustration:hover .layer2 {
   bottom: 32%;
   transition: var(--smooth);
+  transition-delay: 0.2s;
 }
 .illustration:hover .layer3 {
   bottom: 26%;
@@ -540,7 +544,7 @@ input:checked + .slider:before {
   bottom: 60%;
   left: 28%;
   z-index: 5;
-  animation: balloon 50s linear infinite;
+  animation: balloon 70s linear infinite;
   transform: var(--smooth);
 }
 @keyframes balloon {
