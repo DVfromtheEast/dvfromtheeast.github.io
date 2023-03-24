@@ -366,57 +366,143 @@ input:checked + .slider:before {
   background: var(--onsurface);
 }
 /* banner */
+
 .banner {
   position: relative;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  justify-content: space-evenly;
+  gap: 1rem;
   align-items: center;
 }
-.banner_img {
+.illustration {
+  position: relative;
+  max-width: 620px;
+  margin-top: 1rem;
+  max-height: 620px;
+  width: 90vw;
+  height: 90vw;
+}
+.platform {
+  position: relative;
   width: 100%;
-  height: 60%;
+  height: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 4.5rem;
   pointer-events: none;
   -webkit-touch-callout: none;
 }
-.banner_img img {
-  position: absolute;
-  z-index: -1;
+.layer {
+  z-index: 0;
+  width: 100%;
+  height: 100%;
 }
-.banner_img .illustration {
-  animation: MoveUpDown 3s linear infinite;
+.layer1 {
+  position: absolute;
+  z-index: 1;
+  width: 62%;
+  left: 10%;
+  bottom: 29%;
+}
+.layer2 {
+  position: absolute;
+  z-index: 2;
+  width: 26%;
+  right: 12%;
+  bottom: 30%;
+}
+.layer3 {
+  position: absolute;
+  z-index: 3;
+  width: 18%;
+  right: 30%;
+  bottom: 24%;
+}
+.layer4 {
+  position: absolute;
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+}
+.moon {
+  position: absolute;
+  width: 12%;
+  right: 26%;
+  top: 16%;
+  z-index: 0;
+}
+/* .sun {
+  position: absolute;
+  width: 16%;
+  left: 4%;
+  top: 10%;
+  z-index: 0;
+} */
+.sun {
+  position: absolute;
+  opacity: 0;
+  width: 4%;
+  left: 4%;
+  top: 44%;
+  z-index: 0;
+}
+.cloud1 {
+  position: absolute;
+  width: 10%;
+  top: 14%;
+  left: 44%;
+}
+.cloud2 {
+  position: absolute;
+  width: 6%;
+  top: 12%;
+  left: 32%;
+}
+.cloud3 {
+  position: absolute;
+  width: 4%;
+  top: 16%;
+  left: 28%;
+}
+.balloon {
+  position: absolute;
+  width: 8%;
+  bottom: 60%;
+  left: 28%;
+  z-index: 5;
+}
+
+.platform {
+  animation: MoveUpDown 4s linear infinite;
 }
 @keyframes MoveUpDown {
   0%,
   100% {
-    transform: translateY(10px);
+    transform: translateY(8px);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
   }
 }
 
 .banner_text {
   display: flex;
   flex-direction: column;
-  height: 40%;
+  height: 30%;
   justify-content: center;
   width: 100%;
   text-align: left;
   margin-bottom: 3rem;
+  z-index: 7;
 }
 .banner_text h1 {
-  margin-bottom: 20px;
+  margin-bottom: 0.75rem;
   color: var(--onbg);
 }
 .banner_text p {
-  margin-bottom: 32px;
+  margin-bottom: 1rem;
   color: var(--onbg);
 }
 .dec {
@@ -985,14 +1071,13 @@ textarea::placeholder {
   }
   .banner {
     flex-direction: row-reverse;
-    gap: 1rem;
+    justify-content: space-between;
+    gap: 3rem;
   }
-  .banner_img {
-    margin-top: 0;
-  }
-  .banner_img img {
+  .illustration {
     width: 50%;
-    right: -2rem;
+    height: auto;
+    margin-top: 0rem;
   }
   .banner_text {
     max-width: 27rem;
