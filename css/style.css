@@ -878,7 +878,8 @@ footer {
   flex-direction: column-reverse;
   align-items: center;
   text-decoration: none;
-  color: var(--onprimary);
+  color: var(--onsurface);
+  background-color: var(--field);
   overflow: hidden;
 }
 .card_text {
@@ -899,12 +900,8 @@ footer {
 .card_title img {
   width: 2.5rem;
 }
-.card_title h3 {
-  color: var(--onprimary);
-}
 .card_text p {
   font-weight: 300;
-  color: var(--onprimary);
 }
 .tag {
   display: inline-flex;
@@ -915,8 +912,8 @@ footer {
   margin-right: 0.75rem;
   border-radius: 4px;
   padding: 0.3rem 1rem;
-  background-color: rgba(255, 255, 255, 0.3);
-  color: var(--onprimary);
+  background-color: rgba(255, 255, 255, 0.5);
+  color: var(--onsurface);
   text-transform: uppercase;
   width: fit-content;
 }
