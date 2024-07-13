@@ -1,11 +1,11 @@
-import { Typography } from '@mui/material';
 import Header from '../components/header';
+import Home from './home';
 
 function App() {
   return (
     <>
       <Header />
-      <Typography variant="subtitle2"> Test1</Typography>
+      <Home />
     </>
   );
 }

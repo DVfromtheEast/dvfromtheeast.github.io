@@ -3,27 +3,27 @@ import '@fontsource-variable/noto-sans';
 
 const DVTheme = createTheme({
   typography: {
-    h3: {
+    h1: {
       fontSize: '3rem',
-      lineHeight: 1.25,
+      lineHeight: '3.75rem',
+      fontWeight: 600,
+      fontFamily: ['Noto Sans Variable'].join(','),
+    },
+    h2: {
+      fontSize: '2.25rem',
+      lineHeight: '3rem',
+      fontWeight: 800,
+      fontFamily: ['Noto Sans Variable'].join(','),
+    },
+    h3: {
+      fontSize: '1.75rem',
+      lineHeight: '2.25rem',
       fontWeight: 600,
       fontFamily: ['Noto Sans Variable'].join(','),
     },
     h4: {
-      fontSize: '2rem',
-      lineHeight: 1.25,
-      fontWeight: 500,
-      fontFamily: ['Noto Sans Variable'].join(','),
-    },
-    h5: {
-      fontSize: '1.5rem',
-      lineHeight: 1.25,
-      fontWeight: 600,
-      fontFamily: ['Noto Sans Variable'].join(','),
-    },
-    h6: {
       fontSize: '1.25rem',
-      lineHeight: '1.6rem',
+      lineHeight: '1.5rem',
       fontWeight: 600,
       fontFamily: ['Noto Sans Variable'].join(','),
     },
@@ -41,13 +41,13 @@ const DVTheme = createTheme({
     },
     body1: {
       fontSize: '1rem',
-      lineHeight: 1.5,
+      lineHeight: '1.25rem',
       fontWeight: 500,
       fontFamily: ['Noto Sans Variable'].join(','),
     },
     body2: {
       fontSize: '0.875rem',
-      lineHeight: 1.43,
+      lineHeight: '1.25rem',
       fontWeight: 500,
       fontFamily: ['Noto Sans Variable'].join(','),
     },
