@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import type { NextPage } from 'next'
-import Header from '../components/header'
-import Home from './home'
+import { Box } from '@mui/material';
+import Header from '../components/Header';
+import Home from '../components/sections/Home'
 
 type Language = 'en' | 'de' | 'vi';
 
@@ -28,11 +29,11 @@ const IndexPage: NextPage = () => {
   }
 
   return (
-    <>
+    <Box sx={{ display: 'flex', flexDirection: 'column', width: 1, alignItems: 'center' }}>
       <Header activeSection={activeSection} setActiveSection={setActiveSection} language={language}
         setLanguage={setLanguage} />
       {renderSection()}
-    </>
+    </Box>
   )
 }
 

@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material';
-import Link from 'next/link'
+import { translations } from '../translation';
 
 type Section = 'home' | 'about' | 'works' | 'skills' | 'contact';
 type Language = 'en' | 'de' | 'vi';
@@ -12,7 +12,7 @@ type HeaderProps = {
 
 function Header({ activeSection, setActiveSection, language,
   setLanguage, }: HeaderProps) {
-
+  const t = translations[language];
   const nextLanguage = () => {
     if (language === 'en') setLanguage('de');
     else if (language === 'de') setLanguage('vi');
@@ -26,7 +26,7 @@ function Header({ activeSection, setActiveSection, language,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        width: '100%'
+        width: '75%',
       }}
     >
       {/* Logo */}
@@ -41,7 +41,7 @@ function Header({ activeSection, setActiveSection, language,
             ? '#ffffff'
             : '#ff0000', transition: '0.3s ease',
         }} variant="body1">
-          About me
+          {t.about.navigation}
         </Typography>
 
         <Typography onClick={() => setActiveSection('works')} sx={{
@@ -49,7 +49,7 @@ function Header({ activeSection, setActiveSection, language,
             ? '#ffffff'
             : '#ff0000', transition: '0.3s ease',
         }} variant="body1">
-          Works
+          {t.works.navigation}
         </Typography>
 
         <Typography onClick={() => setActiveSection('skills')} sx={{
@@ -57,7 +57,7 @@ function Header({ activeSection, setActiveSection, language,
             ? '#ffffff'
             : '#ff0000', transition: '0.3s ease',
         }} variant="body1">
-          Skills
+          {t.skills.navigation}
         </Typography>
 
         <Typography onClick={() => setActiveSection('contact')} sx={{
@@ -65,7 +65,7 @@ function Header({ activeSection, setActiveSection, language,
             ? '#ffffff'
             : '#ff0000', transition: '0.3s ease',
         }} variant="body1">
-          Contact
+          {t.contact.navigation}
         </Typography>
       </Box>
 
