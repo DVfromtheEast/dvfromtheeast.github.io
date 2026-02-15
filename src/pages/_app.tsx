@@ -1,7 +1,7 @@
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import { ThemeProvider } from '@mui/material/styles';
-import DVTheme from '../../theme';
+import { ThemeModeProvider } from '../context/ThemeContext'
+
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -19,9 +19,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="stylesheet" href="/css/style.css" />
       </Head>
 
-      <ThemeProvider theme={DVTheme}>
+      <ThemeModeProvider>
         <Component {...pageProps} />
-      </ThemeProvider>
+      </ThemeModeProvider>
     </>
   );
 }

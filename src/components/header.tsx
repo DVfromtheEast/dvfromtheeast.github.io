@@ -1,5 +1,9 @@
-import { Box, Typography } from '@mui/material';
-import { translations } from '../translation';
+import { Box, Typography } from '@mui/material'
+import { translations } from '../translation'
+import { Switch } from '@mui/material'
+import DarkModeIcon from '@mui/icons-material/DarkMode'
+import LightModeIcon from '@mui/icons-material/LightMode'
+import { useThemeMode } from '../context/ThemeContext'
 
 type Section = 'home' | 'about' | 'works' | 'skills' | 'contact';
 type Language = 'en' | 'de' | 'vi';
@@ -18,6 +22,8 @@ function Header({ activeSection, setActiveSection, language,
     else if (language === 'de') setLanguage('vi');
     else setLanguage('en');
   };
+
+  const { mode, toggleTheme } = useThemeMode()
 
   return (
     <Box
@@ -76,16 +82,28 @@ function Header({ activeSection, setActiveSection, language,
       >
         {language.toUpperCase()}
       </Typography>
-
       {/* Theme Switch */}
-      <label className="switch">
-        <input type="checkbox" />
-        <span className="slider round" id="slider">
-          <i className="material-icons dark">dark_mode</i>
-          <i className="material-icons light">light_mode</i>
-        </span>
-      </label>
-
+      <Switch
+        checked={mode === 'dark'}
+        onChange={toggleTheme}
+        checkedIcon={<LightModeIcon fontSize="medium" sx={{ color: '#ffffff!important', p: 0 }} />}
+        icon={<DarkModeIcon fontSize="medium" sx={{ color: '#ffffff!important', p: 0 }} />}
+        sx={{
+          alignItems: 'center', width: 'auto', px: 1, pb: 1,
+          '& .MuiSwitch-track': {
+            borderRadius: 4,
+            bgcolor: '#ff0000!important',
+            width: '3rem',
+            height: '2rem',
+          },
+          '& .MuiSwitch-thumb': {
+            bgcolor: '#ffffff!important',
+          },
+          '& .Mui-checked + .MuiSwitch-track': {
+            bgcolor: '#ffffff!important',
+          },
+        }}
+      />
       {/* Menu Icon */}
       <div className="navbar_icon1">
         <div className="navbar_icon2"></div>
