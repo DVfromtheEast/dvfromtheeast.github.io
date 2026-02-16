@@ -5,8 +5,8 @@ function Home() {
   const router = useRouter()
 
   return (
-    <Box sx={{ width: '70%', }}>
-      <div className="banner">
+    <Box sx={{ width: '70%', height: '100%' }}>
+      <Box sx={{ height: '100%', display: 'flex', flexDirection: 'row-reverse', gap: 3, alignItems: 'center', justifyContent: 'space-between' }}>
         <div className="illustration">
           <img className="moon" src="/images/Banner/moon.png" alt="Moon" loading="lazy" />
           <img className="sun" src="/images/Banner/sun.png" alt="Sun" loading="lazy" />
@@ -23,11 +23,10 @@ function Home() {
             <img className="layer" id="layer" src="/images/Banner/night.png" alt="" />
           </div>
         </div>
-        <div className="banner_text">
+        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'start', gap: 2, maxWidth: '26rem' }}>
           <Typography variant="h1" sx={{ color: 'text.primary', mb: 1 }}>
             I create visual for your product
           </Typography>
-
           <Typography variant="body1" sx={{ color: 'text.primary', mb: 2 }}>
             As an independent designer, I love to make innovative and meaningful things.
           </Typography>
@@ -38,10 +37,8 @@ function Home() {
           >
             Check out my works
           </button>
-        </div>
-      </div>
-
-
+        </Box>
+      </Box>
       {/* decorative background */}
       <div className="dec">
         <img src="/images/DV_BG.svg" alt="DV Background" />

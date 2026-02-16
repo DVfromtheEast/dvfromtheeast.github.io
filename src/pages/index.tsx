@@ -29,7 +29,7 @@ const IndexPage: NextPage = () => {
   }
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', width: 1, alignItems: 'center' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', width: 1, height: '100vh', alignItems: 'center' }}>
       <Header activeSection={activeSection} setActiveSection={setActiveSection} language={language}
         setLanguage={setLanguage} />
       {renderSection()}

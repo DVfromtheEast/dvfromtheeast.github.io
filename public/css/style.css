@@ -34,7 +34,6 @@ html {
   transition: var(--smooth);
 }
 body {
-  font-family: 'Be Vietnam Pro', sans-serif;
   background: var(--bg);
 }
 /* typeface */
@@ -365,17 +364,7 @@ input:checked + .slider:before {
   transform: rotate(-45deg);
   background: var(--onsurface);
 }
-/* banner */
 
-.banner {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  gap: 1rem;
-  align-items: center;
-}
 .illustration {
   position: relative;
   max-width: 620px;
@@ -582,17 +571,6 @@ input:checked + .slider:before {
   50% {
     transform: translateY(-8px);
   }
-}
-
-.banner_text {
-  display: flex;
-  flex-direction: column;
-  height: 30%;
-  justify-content: center;
-  width: 100%;
-  text-align: left;
-  margin-bottom: 3rem;
-  z-index: 7;
 }
 .dec {
   position: absolute;

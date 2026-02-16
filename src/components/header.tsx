@@ -109,7 +109,8 @@ function Header({ activeSection, setActiveSection, language,
           },
           '& .MuiSwitch-input': {
             left: '0!important',
-            width: '150%!important',
+            right: '0!important',
+            width: '100%!important',
           },
         }}
       />
