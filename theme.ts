@@ -1,4 +1,4 @@
-import { createTheme, Theme } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles';
 import '@fontsource-variable/noto-sans';
 
 const DVTheme = (mode: 'light' | 'dark') =>
@@ -11,24 +11,24 @@ const DVTheme = (mode: 'light' | 'dark') =>
       },
       background: {
         default: mode === 'dark' ? '#020216' : '#fafafa',
-        paper: mode === 'dark' ? '#090822' : '#f4f3fa',
+        paper: mode === 'dark' ? '#25233a' : '#d1d1e5',
       },
       text: {
         primary: mode === 'dark' ? '#fafafa' : '#020216',
-        secondary: mode === 'dark' ? '#e0e0ef' : '#25233a',
+        secondary: mode === 'dark' ? '#d1d1e5' : '#25233a',
       },
     },
     typography: {
       h1: {
-        fontSize: '3rem',
-        lineHeight: '3.75rem',
+        fontSize: '4rem',
+        lineHeight: '4.25rem',
         fontWeight: 600,
         fontFamily: 'Noto Sans Variable',
       },
       h2: {
         fontSize: '2.25rem',
         lineHeight: '3rem',
-        fontWeight: 800,
+        fontWeight: 600,
         fontFamily: 'Noto Sans Variable',
       },
       h3: {

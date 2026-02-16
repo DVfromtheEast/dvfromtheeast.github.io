@@ -32,7 +32,9 @@ function Header({ activeSection, setActiveSection, language,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        width: '75%',
+        width: '70%',
+        py: 3,
+        gap: 1
       }}
     >
       {/* Logo */}
@@ -41,7 +43,7 @@ function Header({ activeSection, setActiveSection, language,
       </Box>
 
       {/* Navigation */}
-      <Box sx={{ display: 'flex', flexDirection: 'row', gap: '2rem' }}>
+      <Box sx={{ display: 'flex', flexDirection: 'row', gap: '2rem', width: '80%', justifyContent: 'center' }}>
         <Typography onClick={() => setActiveSection('about')} sx={{
           cursor: 'pointer', color: activeSection === 'about'
             ? '#ffffff'
@@ -86,21 +88,28 @@ function Header({ activeSection, setActiveSection, language,
       <Switch
         checked={mode === 'dark'}
         onChange={toggleTheme}
-        checkedIcon={<LightModeIcon fontSize="medium" sx={{ color: '#ffffff!important', p: 0 }} />}
-        icon={<DarkModeIcon fontSize="medium" sx={{ color: '#ffffff!important', p: 0 }} />}
+        checkedIcon={<LightModeIcon fontSize="small" sx={{ color: 'text.secondary', p: 0 }} />}
+        icon={<DarkModeIcon fontSize="small" sx={{ color: 'text.secondary', p: 0 }} />}
         sx={{
-          alignItems: 'center', width: 'auto', px: 1, pb: 1,
+          alignItems: 'center', px: 0.75, width: 'auto', transition: 'ease-in-out 0.3s',
+          '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
+            bgcolor: 'background.paper',
+            opacity: 1,
+            border: 'solid 1px',
+            borderColor: 'text.secondary'
+          },
           '& .MuiSwitch-track': {
             borderRadius: 4,
-            bgcolor: '#ff0000!important',
             width: '3rem',
-            height: '2rem',
+            height: '1.5rem',
+            bgcolor: 'background.paper',
+            opacity: 1,
+            border: 'solid 1px',
+            borderColor: 'text.secondary'
           },
-          '& .MuiSwitch-thumb': {
-            bgcolor: '#ffffff!important',
-          },
-          '& .Mui-checked + .MuiSwitch-track': {
-            bgcolor: '#ffffff!important',
+          '& .MuiSwitch-input': {
+            left: '0!important',
+            width: '150%!important',
           },
         }}
       />

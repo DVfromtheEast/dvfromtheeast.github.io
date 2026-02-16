@@ -5,7 +5,7 @@ function Home() {
   const router = useRouter()
 
   return (
-    <Box sx={{ width: '75%', }}>
+    <Box sx={{ width: '70%', }}>
       <div className="banner">
         <div className="illustration">
           <img className="moon" src="/images/Banner/moon.png" alt="Moon" loading="lazy" />
@@ -24,11 +24,11 @@ function Home() {
           </div>
         </div>
         <div className="banner_text">
-          <Typography variant="h1">
+          <Typography variant="h1" sx={{ color: 'text.primary', mb: 1 }}>
             I create visual for your product
           </Typography>
 
-          <Typography variant="body1">
+          <Typography variant="body1" sx={{ color: 'text.primary', mb: 2 }}>
             As an independent designer, I love to make innovative and meaningful things.
           </Typography>
 
