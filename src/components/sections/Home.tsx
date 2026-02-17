@@ -2,6 +2,8 @@ import { Box, Typography } from '@mui/material'
 import { useRouter } from 'next/router'
 import { translations } from '../../translation'
 import { useLanguage } from '../../context/LanguageContext'
+import { TextTransition } from '../TextTransition'
+import DVButton from '../Button'
 
 
 function Home() {
@@ -27,10 +29,13 @@ function Home() {
             <img className="layer" id="layer" src="/images/Banner/night.png" alt="" />
           </div>
         </div>
+
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'start', gap: 2, maxWidth: '26rem' }}>
-          <Typography variant="h1" sx={{ color: 'text.primary', mb: 1 }}>
-            {t.headline}
-          </Typography>
+          <TextTransition>
+            <Typography variant="h1" sx={{ color: 'text.primary', mb: 1 }}>
+              {t.headline}
+            </Typography>
+          </TextTransition>
           <Typography variant="body1" sx={{ color: 'text.primary', mb: 2 }}>
             I'm a wanderer who loves to make innovative and meaningful things.
           </Typography>
@@ -41,6 +46,22 @@ function Home() {
           >
             Check out my works
           </button>
+          <DVButton>Check out my works</DVButton>
+          <DVButton customVariant="outline">Check out my works</DVButton>
+          <DVButton customVariant="ghost">Check out my works</DVButton>
+          <DVButton customVariant="danger">Check out my works</DVButton>
+          <DVButton loading>
+            Save
+          </DVButton>
+          <DVButton loading customVariant="outline">
+            Save
+          </DVButton>
+          <DVButton loading customVariant="ghost">
+            Save
+          </DVButton>
+          <DVButton loading customVariant="danger">
+            Save
+          </DVButton>
         </Box>
       </Box>
       {/* decorative background */}

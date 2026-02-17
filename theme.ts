@@ -74,12 +74,6 @@ const DVTheme = (mode: 'light' | 'dark') =>
         fontWeight: 500,
         fontFamily: 'Noto Sans Variable',
       },
-      button: {
-        fontSize: 16,
-        fontWeight: 600,
-        lineHeight: 2,
-        fontFamily: 'Noto Sans Variable',
-      },
     },
   });
 

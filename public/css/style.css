@@ -122,7 +122,6 @@ img {
 button:hover {
   transform: scale(0.98);
   transition: var(--smooth);
-  filter: brightness(130%);
 }
 /* header */
 header {
