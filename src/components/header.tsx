@@ -4,24 +4,25 @@ import { Switch } from '@mui/material'
 import DarkModeIcon from '@mui/icons-material/DarkMode'
 import LightModeIcon from '@mui/icons-material/LightMode'
 import { useThemeMode } from '../context/ThemeContext'
+import { useLanguage } from '../context/LanguageContext'
+import { Language } from '../context/LanguageContext'
 
 type Section = 'home' | 'about' | 'works' | 'skills' | 'contact';
-type Language = 'en' | 'de' | 'vi';
 type HeaderProps = {
-  activeSection: Section;
-  setActiveSection: (section: 'home' | 'about' | 'works' | 'skills' | 'contact') => void
-  language: Language;
-  setLanguage: (lang: Language) => void;
+  activeSection: Section
+  setActiveSection: (section: Section) => void
 }
 
-function Header({ activeSection, setActiveSection, language,
-  setLanguage, }: HeaderProps) {
-  const t = translations[language];
+function Header({ activeSection, setActiveSection }: HeaderProps) {
+  const { language, setLanguage } = useLanguage()
+  const t = translations[language]
+  const languages: Language[] = ['en', 'de', 'vi']
+
   const nextLanguage = () => {
-    if (language === 'en') setLanguage('de');
-    else if (language === 'de') setLanguage('vi');
-    else setLanguage('en');
-  };
+    const currentIndex = languages.indexOf(language)
+    const nextIndex = (currentIndex + 1) % languages.length
+    setLanguage(languages[nextIndex])
+  }
 
   const { mode, toggleTheme } = useThemeMode()
 

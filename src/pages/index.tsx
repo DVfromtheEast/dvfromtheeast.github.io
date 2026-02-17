@@ -4,13 +4,8 @@ import { Box } from '@mui/material';
 import Header from '../components/Header';
 import Home from '../components/sections/Home'
 
-type Language = 'en' | 'de' | 'vi';
-
-
 
 const IndexPage: NextPage = () => {
-
-  const [language, setLanguage] = useState<Language>('en');
   const [activeSection, setActiveSection] = useState<'home' | 'about' | 'works' | 'skills' | 'contact'>('home')
 
   const renderSection = () => {
@@ -29,9 +24,8 @@ const IndexPage: NextPage = () => {
   }
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', width: 1, height: '100vh', alignItems: 'center' }}>
-      <Header activeSection={activeSection} setActiveSection={setActiveSection} language={language}
-        setLanguage={setLanguage} />
+    <Box sx={{ display: 'flex', flexDirection: 'column', width: 1, height: '100vh', alignItems: 'center', pb: 4 }}>
+      <Header activeSection={activeSection} setActiveSection={setActiveSection} />
       {renderSection()}
     </Box>
   )

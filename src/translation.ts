@@ -1,5 +1,6 @@
 export const translations = {
   en: {
+    headline: 'Ideate Visualize Actualize',
     about: {
       navigation: 'About me',
     },
@@ -12,6 +13,7 @@ export const translations = {
     contact: { navigation: 'Contact' },
   },
   de: {
+    headline: 'Test Test Test',
     about: {
       navigation: 'Über mich',
     },
@@ -24,6 +26,7 @@ export const translations = {
     contact: { navigation: 'Kontakt' },
   },
   vi: {
+    headline: 'Test Test Test',
     about: {
       navigation: 'Giới thiệu',
     },

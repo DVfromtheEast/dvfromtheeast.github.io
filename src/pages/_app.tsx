@@ -1,6 +1,7 @@
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { ThemeModeProvider } from '../context/ThemeContext'
+import { LanguageProvider } from '../context/LanguageContext';
 
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -18,10 +19,11 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <link rel="stylesheet" href="/css/style.css" />
       </Head>
-
-      <ThemeModeProvider>
-        <Component {...pageProps} />
-      </ThemeModeProvider>
+      <LanguageProvider>
+        <ThemeModeProvider>
+          <Component {...pageProps} />
+        </ThemeModeProvider>
+      </LanguageProvider>
     </>
   );
 }

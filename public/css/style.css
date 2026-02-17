@@ -33,9 +33,6 @@ html {
   scroll-behavior: smooth;
   transition: var(--smooth);
 }
-body {
-  background: var(--bg);
-}
 /* typeface */
 h1 {
   font-size: 3rem;
@@ -575,6 +572,7 @@ input:checked + .slider:before {
 .dec {
   position: absolute;
   width: 36rem;
+
   top: 0rem;
   right: 0rem;
   opacity: 0.85;

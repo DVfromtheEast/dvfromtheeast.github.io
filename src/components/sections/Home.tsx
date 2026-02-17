@@ -1,9 +1,13 @@
 import { Box, Typography } from '@mui/material'
 import { useRouter } from 'next/router'
+import { translations } from '../../translation'
+import { useLanguage } from '../../context/LanguageContext'
+
 
 function Home() {
   const router = useRouter()
-
+  const { language, setLanguage } = useLanguage()
+  const t = translations[language]
   return (
     <Box sx={{ width: '70%', height: '100%' }}>
       <Box sx={{ height: '100%', display: 'flex', flexDirection: 'row-reverse', gap: 3, alignItems: 'center', justifyContent: 'space-between' }}>
@@ -25,10 +29,10 @@ function Home() {
         </div>
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'start', gap: 2, maxWidth: '26rem' }}>
           <Typography variant="h1" sx={{ color: 'text.primary', mb: 1 }}>
-            I create visual for your product
+            {t.headline}
           </Typography>
           <Typography variant="body1" sx={{ color: 'text.primary', mb: 2 }}>
-            As an independent designer, I love to make innovative and meaningful things.
+            I'm a wanderer who loves to make innovative and meaningful things.
           </Typography>
 
           <button
