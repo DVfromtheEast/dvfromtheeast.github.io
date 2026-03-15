@@ -2,7 +2,9 @@ import { useState } from 'react'
 import type { NextPage } from 'next'
 import { Box } from '@mui/material';
 import Header from '../components/Header';
-import Home from '../components/sections/Home'
+import Home from '../components/sections/Home';
+import Bio from '../components/sections/Bio';
+import DVAgentChat from '../components/DvAgent';
 
 
 const IndexPage: NextPage = () => {
@@ -11,7 +13,7 @@ const IndexPage: NextPage = () => {
   const renderSection = () => {
     switch (activeSection) {
       case 'about':
-        return <div style={{ color: '#ff0000' }}>About Section</div>
+        return <Bio />
       case 'works':
         return <div style={{ color: '#ff0000' }}>Works Section</div>
       case 'skills':
@@ -26,6 +28,7 @@ const IndexPage: NextPage = () => {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', width: 1, height: '100vh', alignItems: 'center', pb: 4 }}>
       <Header activeSection={activeSection} setActiveSection={setActiveSection} />
+      <DVAgentChat />
       {renderSection()}
     </Box>
   )

@@ -38,19 +38,18 @@ export default function DVButton({
             case 'outline':
                 return {
                     border: '1px solid',
-                    borderColor: 'text.primary',
+                    borderColor: 'text.secondary',
                     backgroundColor: 'transparent',
-                    color: 'text.primary',
+                    color: 'text.secondary',
                     '&:hover': {
-                        backgroundColor: 'primary.main',
-                        color: 'primary.contrastText',
+                        backgroundColor: 'action.hover',
                     },
                 }
 
             case 'ghost':
                 return {
                     backgroundColor: 'transparent',
-                    color: 'text.primary',
+                    color: 'text.secondary',
                     '&:hover': {
                         backgroundColor: 'action.hover',
                     },
@@ -94,9 +93,11 @@ export default function DVButton({
             {...props}
         >
             {loading ? (
-                <CircularProgress size={20} thickness={6} sx={(theme) => ({
-                    color: theme.palette.text.primary,
-                })} />
+                <CircularProgress size={20} thickness={6} sx={{
+                    color: customVariant === 'primary' || customVariant === 'danger'
+                        ? 'primary.contrastText'
+                        : 'text.secondary',
+                }} />
             ) : (
                 children
             )}

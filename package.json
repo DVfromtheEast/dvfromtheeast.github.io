@@ -18,6 +18,7 @@
     "@fontsource-variable/noto-sans": "^5.2.10",
     "@mui/icons-material": "^5.15.21",
     "@mui/material": "^5.15.21",
+    "gray-matter": "^4.0.3",
     "next": "^14.2.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"

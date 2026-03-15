@@ -39,29 +39,7 @@ function Home() {
           <Typography variant="body1" sx={{ color: 'text.primary', mb: 2 }}>
             I'm a wanderer who loves to make innovative and meaningful things.
           </Typography>
-
-          <button
-            className="b"
-            onClick={() => router.push('/works')}
-          >
-            Check out my works
-          </button>
-          <DVButton>Check out my works</DVButton>
-          <DVButton customVariant="outline">Check out my works</DVButton>
-          <DVButton customVariant="ghost">Check out my works</DVButton>
-          <DVButton customVariant="danger">Check out my works</DVButton>
-          <DVButton loading>
-            Save
-          </DVButton>
-          <DVButton loading customVariant="outline">
-            Save
-          </DVButton>
-          <DVButton loading customVariant="ghost">
-            Save
-          </DVButton>
-          <DVButton loading customVariant="danger">
-            Save
-          </DVButton>
+          <DVButton onClick={() => router.push('/works')} >Check out my works</DVButton>
         </Box>
       </Box>
       {/* decorative background */}

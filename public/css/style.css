@@ -729,11 +729,8 @@ footer {
   width: 12rem;
   height: 12rem;
   cursor: pointer;
-  background: linear-gradient(
-      0deg,
-      rgba(61, 178, 15, 0.1),
-      rgba(61, 178, 15, 0.1)
-    ),
+  background:
+    linear-gradient(0deg, rgba(61, 178, 15, 0.1), rgba(61, 178, 15, 0.1)),
     url('Aboutme.png');
   background-size: cover;
   background-repeat: no-repeat;
