@@ -42,37 +42,36 @@ function Header({ activeSection, setActiveSection }: HeaderProps) {
       <Box className="header_logo" onClick={() => setActiveSection('home')} sx={{ cursor: 'pointer' }}>
         <img src="/images/Logo_DV.svg" alt="DV Logo" />
       </Box>
-
       {/* Navigation */}
       <Box sx={{ display: 'flex', flexDirection: 'row', gap: '2rem', width: '80%', justifyContent: 'center' }}>
         <Typography onClick={() => setActiveSection('about')} sx={{
           cursor: 'pointer', color: activeSection === 'about'
-            ? '#ffffff'
-            : '#ff0000', transition: '0.3s ease',
+            ? 'primary.main'
+            : 'text.primary', transition: '0.3s ease',
         }} variant="body1">
           {t.about.navigation}
         </Typography>
 
         <Typography onClick={() => setActiveSection('works')} sx={{
           cursor: 'pointer', color: activeSection === 'works'
-            ? '#ffffff'
-            : '#ff0000', transition: '0.3s ease',
+            ? 'primary.main'
+            : 'text.primary', transition: '0.3s ease',
         }} variant="body1">
           {t.works.navigation}
         </Typography>
 
         <Typography onClick={() => setActiveSection('skills')} sx={{
           cursor: 'pointer', color: activeSection === 'skills'
-            ? '#ffffff'
-            : '#ff0000', transition: '0.3s ease',
+            ? 'primary.main'
+            : 'text.primary', transition: '0.3s ease',
         }} variant="body1">
           {t.skills.navigation}
         </Typography>
 
         <Typography onClick={() => setActiveSection('contact')} sx={{
           cursor: 'pointer', color: activeSection === 'contact'
-            ? '#ffffff'
-            : '#ff0000', transition: '0.3s ease',
+            ? 'primary.main'
+            : 'text.primary', transition: '0.3s ease',
         }} variant="body1">
           {t.contact.navigation}
         </Typography>

@@ -30,6 +30,9 @@ const IndexPage: NextPage = () => {
       <Header activeSection={activeSection} setActiveSection={setActiveSection} />
       <DVAgentChat />
       {renderSection()}
+      <div className="dec">
+        <img src="./images/DV_BG.svg" alt="DV BG" />
+      </div>
     </Box>
   )
 }

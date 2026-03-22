@@ -725,47 +725,29 @@ footer {
   align-items: flex-start;
 }
 .profilepic {
-  position: relative;
-  width: 12rem;
-  height: 12rem;
-  cursor: pointer;
   background:
     linear-gradient(0deg, rgba(61, 178, 15, 0.1), rgba(61, 178, 15, 0.1)),
     url('Aboutme.png');
   background-size: cover;
   background-repeat: no-repeat;
   mix-blend-mode: normal;
-  border-radius: 8px;
   transition: var(--smooth);
 }
 .profilepic_dec {
   position: absolute;
-  width: 2rem;
-  height: 2rem;
-  border-width: 0px 0px 3px 3px;
+  width: 3rem;
+  height: 4rem;
   border-style: solid;
   border-color: var(--primary);
-  border-radius: 0px 0px 0px 10px;
   transition: var(--smooth);
-  z-index: -1;
-  opacity: 0;
 }
 .profilepic_dec:nth-child(1) {
-  bottom: 0;
-  left: 0;
+  border-width: 0px 0px 6px 6px;
 }
 .profilepic_dec:nth-child(2) {
-  border-width: 3px 3px 0px 0px;
-  border-radius: 0px 10px 0px 0px;
-  top: 0;
-  right: 0;
+  border-width: 6px 6px 0px 0px;
 }
 .profilepic:active {
-  background: url('Aboutme.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 11rem;
-  height: 11rem;
   margin: 1rem;
 }
 .profilepic:active .profilepic_dec {
@@ -1239,16 +1221,7 @@ textarea::placeholder {
     flex-direction: row;
     gap: 2.5rem;
   }
-  .profilepic {
-    width: 16rem;
-    height: 16rem;
-  }
   .profilepic:hover {
-    background: url('Aboutme.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 15rem;
-    height: 15rem;
     margin: 1rem;
   }
   .profilepic:hover .profilepic_dec {
