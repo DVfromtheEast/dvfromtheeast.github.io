@@ -93,20 +93,24 @@ export default function Bio() {
                 {/* Sections */}
                 <Box sx={{ display: 'flex', flexDirection: 'row', gap: 5, alignItems: 'flex-start' }}>
                     <Box sx={{ py: 2, pr: 2 }}>
-                        <Box className="profilepic" sx={{
-                            position: 'relative', flexShrink: 0, cursor: 'pointer', width: '16rem', height: '32rem', color: 'text.primary', border: theme => `1px solid ${theme.palette.primary.main}`, '&:hover': {
-                                border: 'none',
+                        <Box sx={{
+                            position: 'relative', flexShrink: 0, cursor: 'pointer', width: '16rem', height: '32rem', background: 'linear-gradient(0deg, rgba(61, 178, 15, 0.28), rgba(61, 178, 15, 0.43))', border: theme => `1px solid ${theme.palette.primary.main}`, overflow: 'visible', transition: 'all 0.3s ease',
+                            '&:hover': {
+                                border: 'none', m: '1rem'
                             },
+                            '&:hover .profilepic_dec_bl': { bottom: '-1.5rem', left: '-1.5rem' },
+                            '&:hover .profilepic_dec_tr': { top: '-1.5rem', right: '-1.5rem' },
+                            '&:hover .profilepic': { mixBlendMode: 'color-dodge' },
+
                         }}>
-                            <Box className="profilepic_dec" sx={{
-                                position: 'absolute', bottom: '-0.25rem', left: '-0.25rem', '&:hover': {
-                                    bottom: '-1rem', left: '-1rem'
-                                },
+                            <img className="profilepic" src="https://res.cloudinary.com/da7poid94/image/upload/v1774691466/DV_ugjlos.jpg" alt="DV" style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', }} />
+                            <Box className="profilepic_dec_bl" sx={{
+                                position: 'absolute', width: '2rem', height: '3rem', bottom: '0.5rem', left: '0.5rem', borderLeft: 6, borderBottom: 6, borderColor: theme => ` ${theme.palette.primary.main}`,
+                                transition: 'all 0.3s ease',
                             }}></Box>
-                            <Box className="profilepic_dec" sx={{
-                                position: 'absolute', top: '-0.25rem', right: '-0.25rem', '&:hover': {
-                                    top: '-1rem', right: '-1rem'
-                                },
+                            <Box className="profilepic_dec_tr" sx={{
+                                position: 'absolute', width: '2rem', height: '3rem', top: '0.5rem', right: '0.5rem', borderRight: 6, borderTop: 6, borderColor: theme => ` ${theme.palette.primary.main}`,
+                                transition: 'all 0.3s ease',
                             }}></Box>
                         </Box>
                     </Box>

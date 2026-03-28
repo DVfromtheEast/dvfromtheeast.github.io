@@ -724,44 +724,6 @@ footer {
   gap: 2rem;
   align-items: flex-start;
 }
-.profilepic {
-  background:
-    linear-gradient(0deg, rgba(61, 178, 15, 0.1), rgba(61, 178, 15, 0.1)),
-    url('Aboutme.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  mix-blend-mode: normal;
-  transition: var(--smooth);
-}
-.profilepic_dec {
-  position: absolute;
-  width: 3rem;
-  height: 4rem;
-  border-style: solid;
-  border-color: var(--primary);
-  transition: var(--smooth);
-}
-.profilepic_dec:nth-child(1) {
-  border-width: 0px 0px 6px 6px;
-}
-.profilepic_dec:nth-child(2) {
-  border-width: 6px 6px 0px 0px;
-}
-.profilepic:active {
-  margin: 1rem;
-}
-.profilepic:active .profilepic_dec {
-  z-index: 0;
-  opacity: 1;
-}
-.profilepic:active .profilepic_dec:nth-child(1) {
-  bottom: -1rem;
-  left: -1rem;
-}
-.profilepic:active .profilepic_dec:nth-child(2) {
-  top: -1rem;
-  right: -1rem;
-}
 .info p {
   color: var(--onbg);
   text-align: left;
@@ -1220,21 +1182,6 @@ textarea::placeholder {
   .info {
     flex-direction: row;
     gap: 2.5rem;
-  }
-  .profilepic:hover {
-    margin: 1rem;
-  }
-  .profilepic:hover .profilepic_dec {
-    z-index: 0;
-    opacity: 1;
-  }
-  .profilepic:hover .profilepic_dec:nth-child(1) {
-    bottom: -1rem;
-    left: -1rem;
-  }
-  .profilepic:hover .profilepic_dec:nth-child(2) {
-    top: -1rem;
-    right: -1rem;
   }
   .info p {
     width: calc(100% - 18.5rem);
