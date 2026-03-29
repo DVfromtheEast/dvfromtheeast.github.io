@@ -94,16 +94,16 @@ export default function Bio() {
                 <Box sx={{ display: 'flex', flexDirection: 'row', gap: 5, alignItems: 'flex-start' }}>
                     <Box sx={{ py: 2, pr: 2 }}>
                         <Box sx={{
-                            position: 'relative', flexShrink: 0, cursor: 'pointer', width: '16rem', height: '32rem', background: 'linear-gradient(0deg, rgba(61, 178, 15, 0.28), rgba(61, 178, 15, 0.43))', border: theme => `1px solid ${theme.palette.primary.main}`, overflow: 'visible', transition: 'all 0.3s ease',
+                            position: 'relative', flexShrink: 0, cursor: 'pointer', width: '16rem', height: '32rem', background: 'linear-gradient(0deg, rgba(61, 178, 15, 0.5), rgba(61, 178, 15, 0.15))', border: theme => `1px solid ${theme.palette.primary.main}`, overflow: 'visible', transition: 'all 0.3s ease',
                             '&:hover': {
                                 border: 'none', m: '1rem'
                             },
                             '&:hover .profilepic_dec_bl': { bottom: '-1.5rem', left: '-1.5rem' },
                             '&:hover .profilepic_dec_tr': { top: '-1.5rem', right: '-1.5rem' },
-                            '&:hover .profilepic': { mixBlendMode: 'color-dodge' },
+                            '&:hover .profilepic': { mixBlendMode: 'normal' },
 
                         }}>
-                            <img className="profilepic" src="https://res.cloudinary.com/da7poid94/image/upload/v1774691466/DV_ugjlos.jpg" alt="DV" style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', }} />
+                            <Box component="img" className="profilepic" src="https://res.cloudinary.com/da7poid94/image/upload/v1774691466/DV_ugjlos.jpg" alt="DV" sx={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', mixBlendMode: 'luminosity', }} />
                             <Box className="profilepic_dec_bl" sx={{
                                 position: 'absolute', width: '2rem', height: '3rem', bottom: '0.5rem', left: '0.5rem', borderLeft: 6, borderBottom: 6, borderColor: theme => ` ${theme.palette.primary.main}`,
                                 transition: 'all 0.3s ease',
@@ -122,22 +122,18 @@ export default function Bio() {
                                 </Typography>
                                 {/* Render contact links differently */}
                                 {section.title === "Get In Touch" ? (
-                                    <Box sx={{ mt: 1 }}>
-                                        {section.content.split("\n").map((line, j) => {
-                                            const match = line.match(/^- (.+): (.+)$/);
-                                            if (match) {
-                                                return (
-                                                    <Typography key={j} variant="body2" sx={{ mt: 0.5 }}>
-                                                        {match[1]}:{" "}
-                                                        <Link href={match[2].startsWith("http") ? match[2] : `mailto:${match[2]}`} target="_blank">
-                                                            {match[2]}
-                                                        </Link>
-                                                    </Typography>
-                                                );
-                                            }
-                                            return null;
-                                        })}
-                                    </Box>
+                                    <Typography variant="body1" sx={{ mt: 1, lineHeight: 1.8 }}>
+                                        {section.content.split("reach out").map((part, i, arr) => (
+                                            <>
+                                                {part}
+                                                {i < arr.length - 1 && (
+                                                    <Link href="/contact" variant="subtitle1" sx={{ textDecoration: 'none', }}>
+                                                        reach out
+                                                    </Link>
+                                                )}
+                                            </>
+                                        ))}
+                                    </Typography>
                                 ) : (
                                     <Typography variant="body1" sx={{ mt: 1, lineHeight: 1.8 }}>
                                         {section.content}

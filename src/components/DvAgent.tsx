@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import DVButton from "./Button";
+import DVTextField from "./TextField";
 import {
     Box,
     Typography,
@@ -175,24 +176,13 @@ export default function DVAgentChat() {
                     </Box>
                     <Divider />
                     {/* Input */}
-                    <Box sx={{ display: "flex", alignItems: "center", p: 0, height: "fit-content", backgroundColor: alpha(theme.palette.background.paper, 0.6) }}>
-                        <TextField
-                            fullWidth
+                    <Box sx={{ display: "flex", alignItems: "center", p: 0, height: "fit-content", backgroundColor: theme => theme.palette.background.paper, }}>
+                        <DVTextField
                             size="small"
                             placeholder="Ask about DV..."
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
                             onKeyDown={(e) => e.key === "Enter" && !e.shiftKey && sendMessage()}
-                            disabled={loading}
-                            variant="outlined"
-                            sx={{
-                                height: "100%",
-                                "& .MuiOutlinedInput-root": {
-                                    borderRadius: 0,
-                                    fontSize: 14,
-                                    height: "100%",
-                                },
-                            }}
                         />
                         <DVButton
                             customVariant="ghost"
