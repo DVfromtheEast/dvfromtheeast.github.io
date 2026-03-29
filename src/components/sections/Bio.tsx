@@ -127,7 +127,7 @@ export default function Bio() {
                                             <>
                                                 {part}
                                                 {i < arr.length - 1 && (
-                                                    <Link href="/contact" variant="subtitle1" sx={{ textDecoration: 'none', }}>
+                                                    <Link href="/contact" variant="subtitle1" sx={{ textDecoration: 'none', transition: 'all 0.15s ease-in', '&:hover': { filter: 'brightness(1.2)' } }}>
                                                         reach out
                                                     </Link>
                                                 )}
