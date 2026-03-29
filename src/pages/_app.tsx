@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <link
           rel="icon"
           type="image/x-icon"
-          href="https://i.ibb.co/JQX0wyY/DVFavicon.png"
+          href="https://res.cloudinary.com/da7poid94/image/upload/v1774790840/DVFavicon_vvjiz3.png"
         />
         <link rel="stylesheet" href="/css/style.css" />
       </Head>

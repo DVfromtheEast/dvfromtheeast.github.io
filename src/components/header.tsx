@@ -39,8 +39,8 @@ function Header({ activeSection, setActiveSection }: HeaderProps) {
       }}
     >
       {/* Logo */}
-      <Box className="header_logo" onClick={() => setActiveSection('home')} sx={{ cursor: 'pointer' }}>
-        <img src="/images/Logo_DV.svg" alt="DV Logo" />
+      <Box sx={{ width: '3.5rem', height: '3.5rem', cursor: 'pointer', transition: 'all 0.15s ease-in', '&:hover': { transform: 'scale(0.9)', filter: 'brightness(1.2)' } }} onClick={() => setActiveSection('home')} >
+        <img src="https://res.cloudinary.com/da7poid94/image/upload/v1774790101/DVLogo_p6vnwu.svg" alt="DV Logo" />
       </Box>
       {/* Navigation */}
       <Box sx={{ display: 'flex', flexDirection: 'row', gap: '2rem', width: '80%', justifyContent: 'center' }}>
