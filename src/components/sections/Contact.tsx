@@ -90,15 +90,12 @@ export default function Contact() {
                         <Typography variant="subtitle1">
                             Or reach me at
                         </Typography>
-                        <Box sx={{ display: 'flex', flexDirection: 'row', gap: 1, alignItems: 'center' }}>
-                            <Typography variant="body1" >Email: </Typography>
-                            <Link variant="body1" sx={{ textDecoration: 'none', transition: 'all 0.15s ease-in', '&:hover': { filter: 'brightness(1.2)' } }} href={`mailto:${contact.email}`}>{contact.email}</Link>
-                        </Box>
+                        <Link variant="body1" sx={{ textDecoration: 'none', transition: 'all 0.15s ease-in', '&:hover': { filter: 'brightness(1.2)' } }} href={`mailto:${contact.email}`}>{contact.email}</Link>
                         <Box sx={{ display: 'flex', flexDirection: 'row', gap: 6, alignItems: 'center' }}>
-                            <Link href={contact.linkedin} target="_blank" sx={{ transition: 'all 0.15s ease-in', '&:hover': { transform: 'scale(0.9)', filter: 'brightness(1.2)' } }}><LinkedInIcon /></Link>
-                            <Link href={contact.x} target="_blank" sx={{ transition: 'all 0.15s ease-in', '&:hover': { transform: 'scale(0.9)', filter: 'brightness(1.2)' } }}><XIcon /></Link>
-                            <Link href={contact.discord} target="_blank" sx={{ transition: 'all 0.15s ease-in', '&:hover': { transform: 'scale(0.9)', filter: 'brightness(1.2)' } }}><DiscordIcon /></Link>
-                            <Link href={contact.telegram} target="_blank" sx={{ transition: 'all 0.15s ease-in', '&:hover': { transform: 'scale(0.9)', filter: 'brightness(1.2)' } }}><TelegramIcon /></Link>
+                            <Link href={contact.linkedin} target="_blank" sx={{ transition: 'all 0.15s ease-in', '&:hover': { transform: 'scale(0.9)', filter: 'brightness(1.2)' } }}><LinkedInIcon sx={{ fontSize: 36 }} /></Link>
+                            <Link href={contact.x} target="_blank" sx={{ transition: 'all 0.15s ease-in', '&:hover': { transform: 'scale(0.9)', filter: 'brightness(1.2)' } }}><XIcon sx={{ fontSize: 36 }} /></Link>
+                            <Link href={contact.discord} target="_blank" sx={{ transition: 'all 0.15s ease-in', '&:hover': { transform: 'scale(0.9)', filter: 'brightness(1.2)' } }}><DiscordIcon sx={{ fontSize: 36 }} /></Link>
+                            <Link href={contact.telegram} target="_blank" sx={{ transition: 'all 0.15s ease-in', '&:hover': { transform: 'scale(0.9)', filter: 'brightness(1.2)' } }}><TelegramIcon sx={{ fontSize: 36 }} /></Link>
                         </Box>
                     </Box>
                 </Box>

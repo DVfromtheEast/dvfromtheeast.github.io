@@ -4,6 +4,8 @@ import { Box } from '@mui/material';
 import Header from '../components/Header';
 import Home from '../components/sections/Home';
 import Bio from '../components/sections/Bio';
+import Works from '../components/sections/Works';
+import Skills from '../components/sections/Skills';
 import Contact from '../components/sections/Contact';
 import DVAgentChat from '../components/DvAgent';
 
@@ -16,9 +18,9 @@ const IndexPage: NextPage = () => {
       case 'about':
         return <Bio />
       case 'works':
-        return <div style={{ color: '#ff0000' }}>Works Section</div>
+        return <Works />
       case 'skills':
-        return <div style={{ color: '#ff0000' }}>Skills Section</div>
+        return <Skills />
       case 'contact':
         return <Contact />
       default:

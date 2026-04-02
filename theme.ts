@@ -32,15 +32,15 @@ const DVTheme = (mode: 'light' | 'dark') =>
         fontFamily: 'Noto Sans Variable',
       },
       h3: {
-        fontSize: '1.75rem',
-        lineHeight: '2.25rem',
+        fontSize: '2rem',
+        lineHeight: '2.5rem',
         fontWeight: 600,
         fontFamily: 'Noto Sans Variable',
       },
       h4: {
-        fontSize: '1.25rem',
-        lineHeight: '1.5rem',
-        fontWeight: 600,
+        fontSize: '1.75rem',
+        lineHeight: '2.25rem',
+        fontWeight: 700,
         fontFamily: 'Noto Sans Variable',
       },
       subtitle1: {

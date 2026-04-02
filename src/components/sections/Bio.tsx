@@ -98,17 +98,17 @@ export default function Bio() {
                             '&:hover': {
                                 border: 'none', m: '1rem'
                             },
-                            '&:hover .profilepic_dec_bl': { bottom: '-1.5rem', left: '-1.5rem', borderColor: theme => ` ${theme.palette.primary.main}` },
-                            '&:hover .profilepic_dec_tr': { top: '-1.5rem', right: '-1.5rem', borderColor: theme => ` ${theme.palette.primary.main}` },
+                            '&:hover .pic-dec-bl': { bottom: '-1.5rem', left: '-1.5rem', borderColor: theme => ` ${theme.palette.primary.main}` },
+                            '&:hover .pic-dec-tr': { top: '-1.5rem', right: '-1.5rem', borderColor: theme => ` ${theme.palette.primary.main}` },
                             '&:hover .profilepic': { mixBlendMode: 'normal' },
 
                         }}>
                             <Box component="img" className="profilepic" src="https://res.cloudinary.com/da7poid94/image/upload/v1774691466/DV_ugjlos.jpg" alt="DV" sx={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', mixBlendMode: 'luminosity', }} />
-                            <Box className="profilepic_dec_bl" sx={{
+                            <Box className="pic-dec-bl" sx={{
                                 position: 'absolute', width: '2rem', height: '3rem', bottom: '0.5rem', left: '0.5rem', borderLeft: 6, borderBottom: 6, borderColor: theme => ` ${theme.palette.primary.contrastText}`,
                                 transition: 'all 0.3s ease',
                             }}></Box>
-                            <Box className="profilepic_dec_tr" sx={{
+                            <Box className="pic-dec-tr" sx={{
                                 position: 'absolute', width: '2rem', height: '3rem', top: '0.5rem', right: '0.5rem', borderRight: 6, borderTop: 6, borderColor: theme => ` ${theme.palette.primary.contrastText}`,
                                 transition: 'all 0.3s ease',
                             }}></Box>
