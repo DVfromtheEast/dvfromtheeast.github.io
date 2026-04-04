@@ -8,7 +8,7 @@ import { useThemeMode } from '../context/ThemeContext'
 import { useLanguage } from '../context/LanguageContext'
 import { Language } from '../context/LanguageContext'
 
-type Section = 'home' | 'about' | 'works' | 'abilities' | 'contact';
+type Section = 'home' | 'about' | 'works' | 'work-details' | 'abilities' | 'contact';
 type HeaderProps = {
   activeSection: Section
   setActiveSection: (section: Section) => void
@@ -63,9 +63,9 @@ function Header({ activeSection, setActiveSection }: HeaderProps) {
         </Typography>
 
         <Typography onClick={() => setActiveSection('works')} sx={{
-          cursor: 'pointer', py: 2, color: activeSection === 'works'
+          cursor: 'pointer', py: 2, color: activeSection === 'works' || activeSection === 'work-details'
             ? 'primary.main'
-            : 'text.primary', background: activeSection === 'works'
+            : 'text.primary', background: activeSection === 'works' || activeSection === 'work-details'
               ? `radial-gradient(
       60% 60% at 50% 0%,
       rgba(86, 219, 35, 0.25) 0%,

@@ -7,18 +7,36 @@ import Bio from '../components/sections/Bio';
 import Works from '../components/sections/Works';
 import Skills from '../components/sections/Skills';
 import Contact from '../components/sections/Contact';
+import WorkDetails from '../components/sections/WorkDetails';
 import DVAgentChat from '../components/DvAgent';
 
 
 const IndexPage: NextPage = () => {
-  const [activeSection, setActiveSection] = useState<'home' | 'about' | 'works' | 'abilities' | 'contact'>('home')
+  const [activeSection, setActiveSection] = useState<'home' | 'about' | 'works' | 'work-details' | 'abilities' | 'contact'>(() => {
+    if (typeof window === 'undefined') return 'home'
+    return (localStorage.getItem('activeSection') as typeof activeSection) || 'home'
+  })
+  const [activeCategory, setActiveCategory] = useState<string | null>(() => {
+    if (typeof window === 'undefined') return null
+    return localStorage.getItem('activeCategory') || null
+  })
+  function handleSectionChange(section: typeof activeSection) {
+    setActiveSection(section)
+    localStorage.setItem('activeSection', section)
+  }
 
+  function handleCategoryChange(id: string) {
+    setActiveCategory(id)
+    localStorage.setItem('activeCategory', id)
+  }
   const renderSection = () => {
     switch (activeSection) {
       case 'about':
         return <Bio />
       case 'works':
-        return <Works />
+        return <Works setActiveSection={handleSectionChange} setActiveCategory={handleCategoryChange} />
+      case 'work-details':
+        return <WorkDetails categoryId={activeCategory} setActiveSection={handleSectionChange} />
       case 'abilities':
         return <Skills />
       case 'contact':
@@ -30,11 +48,11 @@ const IndexPage: NextPage = () => {
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', width: 1, height: '100vh', alignItems: 'center', pb: 4 }}>
-      <Header activeSection={activeSection} setActiveSection={setActiveSection} />
+      <Header activeSection={activeSection} setActiveSection={handleSectionChange} />
       <DVAgentChat />
       {renderSection()}
       <div className="dec">
-        <img src="./images/DV_BG.svg" alt="DV BG" />
+        <img src="https://res.cloudinary.com/da7poid94/image/upload/v1775329018/DV_BG_ekfaqh.svg" alt="DV BG" />
       </div>
     </Box>
   )

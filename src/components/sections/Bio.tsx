@@ -96,7 +96,7 @@ export default function Bio() {
                         <Box sx={{
                             position: 'relative', flexShrink: 0, cursor: 'pointer', width: '16rem', height: '32rem', background: 'linear-gradient(0deg, rgba(61, 178, 15, 0.5), rgba(61, 178, 15, 0.15))', border: theme => `1px solid ${theme.palette.primary.main}`, overflow: 'visible', transition: 'all 0.3s ease',
                             '&:hover': {
-                                border: 'none', m: '1rem'
+                                border: theme => `1px solid ${theme.palette.divider}`, m: '1rem'
                             },
                             '&:hover .pic-dec-bl': { bottom: '-1.5rem', left: '-1.5rem', borderColor: theme => ` ${theme.palette.primary.main}` },
                             '&:hover .pic-dec-tr': { top: '-1.5rem', right: '-1.5rem', borderColor: theme => ` ${theme.palette.primary.main}` },

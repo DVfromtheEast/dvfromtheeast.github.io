@@ -559,10 +559,9 @@ input:checked + .slider:before {
 .dec {
   position: absolute;
   width: 36rem;
-
   top: 0rem;
   right: 0rem;
-  opacity: 0.85;
+  opacity: 0.75;
   pointer-events: none;
   -webkit-touch-callout: none;
   z-index: -2;

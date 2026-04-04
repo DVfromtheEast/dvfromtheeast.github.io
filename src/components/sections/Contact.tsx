@@ -11,12 +11,14 @@ import DVButton from "../Button";
 
 const API_URL = process.env.NEXT_PUBLIC_AGENT_API_URL?.replace("/chat", "") || "http://localhost:3001";
 
+type LocalizedString = {
+    en: string;
+    vi: string;
+    de: string;
+};
+
 type ContactData = {
-    title: {
-        en: string;
-        de: string;
-        vi: string;
-    };
+    title: LocalizedString
     email: string;
     linkedin: string;
     x: string;
