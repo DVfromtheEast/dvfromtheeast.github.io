@@ -62,6 +62,7 @@ export default function Contact() {
             </Box>
         );
     }
+    if (!contact) return null;
     return (
         <Box sx={{ width: '70%', mx: "auto", px: 2 }}>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 6, py: 6 }}>

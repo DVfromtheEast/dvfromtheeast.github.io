@@ -41,87 +41,21 @@ export default function Works() {
                 }}>
                     <Grid item xs={3}>
                         <Box sx={{
-                            position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', height: '20rem', backgroundColor: alpha('#6962B2', 0.25), transition: 'all 0.2s ease', backdropFilter: "blur(5px)", '&:hover': {
+                            position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', height: '20rem', backgroundColor: alpha('#906CD2', 0.25), transition: 'all 0.2s ease', backdropFilter: "blur(5px)", '&:hover': {
                                 transform: 'scale(0.96)', filter: 'brightness(1.2)', border: theme => `1px solid ${theme.palette.primary.main}`,
                             }, '&:hover .pic-dec-bl': { bottom: '-1rem', left: '-1rem', borderColor: theme => ` ${theme.palette.primary.main}` },
                             '&:hover .pic-dec-tr': { top: '-1rem', right: '-1rem', borderColor: theme => ` ${theme.palette.primary.main}` },
                         }}>
-                            <Box component="img" src="./images/Landing_page_Design.png" sx={{ width: '60%', height: '60%', objectFit: 'cover', opacity: '0.8', }} />
+                            <Box component="img" src="./images/Landing_page_Design.png" sx={{ width: '60%', height: '60%', objectFit: 'cover', opacity: '0.8', border: theme => `1px solid ${theme.palette.divider}` }} />
                             <Box sx={{ position: 'absolute', bottom: 0, width: 1, p: 3, textAlign: 'center' }}>
                                 <Typography variant="h4">Digital</Typography>
                             </Box>
                             <Box className="pic-dec-bl" sx={{
-                                position: 'absolute', width: '1.5rem', height: '2rem', bottom: '0.5rem', left: '0.5rem', borderLeft: 4, borderBottom: 4, borderColor: "transparent",
+                                position: 'absolute', width: '1.5rem', height: '2rem', bottom: '0.5rem', left: '0.5rem', borderLeft: 4, borderBottom: 4, borderColor: theme => ` ${theme.palette.divider}`,
                                 transition: 'all 0.3s ease',
                             }}></Box>
                             <Box className="pic-dec-tr" sx={{
-                                position: 'absolute', width: '1.5rem', height: '2rem', top: '0.5rem', right: '0.5rem', borderRight: 4, borderTop: 4, borderColor: "transparent",
-                                transition: 'all 0.3s ease',
-                            }}></Box>
-
-                        </Box>
-                    </Grid>
-                    <Grid item xs={3}>
-                        <Box sx={{
-                            position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', height: '20rem', backgroundColor: alpha('#6962B2', 0.25), transition: 'all 0.2s ease', backdropFilter: "blur(5px)", '&:hover': {
-                                transform: 'scale(0.96)', filter: 'brightness(1.2)', border: theme => `1px solid ${theme.palette.primary.main}`,
-                            }, '&:hover .pic-dec-bl': { bottom: '-1rem', left: '-1rem', borderColor: theme => ` ${theme.palette.primary.main}` },
-                            '&:hover .pic-dec-tr': { top: '-1rem', right: '-1rem', borderColor: theme => ` ${theme.palette.primary.main}` },
-                        }}>
-                            <Box component="img" src="./images/Landing_page_Design.png" sx={{ width: '60%', height: '60%', objectFit: 'cover', opacity: '0.8', }} />
-                            <Box sx={{ position: 'absolute', bottom: 0, width: 1, p: 3, textAlign: 'center' }}>
-                                <Typography variant="h4">Digital</Typography>
-                            </Box>
-                            <Box className="pic-dec-bl" sx={{
-                                position: 'absolute', width: '1.5rem', height: '2rem', bottom: '0.5rem', left: '0.5rem', borderLeft: 4, borderBottom: 4, borderColor: "transparent",
-                                transition: 'all 0.3s ease',
-                            }}></Box>
-                            <Box className="pic-dec-tr" sx={{
-                                position: 'absolute', width: '1.5rem', height: '2rem', top: '0.5rem', right: '0.5rem', borderRight: 4, borderTop: 4, borderColor: "transparent",
-                                transition: 'all 0.3s ease',
-                            }}></Box>
-
-                        </Box>
-                    </Grid>
-                    <Grid item xs={3}>
-                        <Box sx={{
-                            position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', height: '20rem', backgroundColor: alpha('#6962B2', 0.25), transition: 'all 0.2s ease', backdropFilter: "blur(5px)", '&:hover': {
-                                transform: 'scale(0.96)', filter: 'brightness(1.2)', border: theme => `1px solid ${theme.palette.primary.main}`,
-                            }, '&:hover .pic-dec-bl': { bottom: '-1rem', left: '-1rem', borderColor: theme => ` ${theme.palette.primary.main}` },
-                            '&:hover .pic-dec-tr': { top: '-1rem', right: '-1rem', borderColor: theme => ` ${theme.palette.primary.main}` },
-                        }}>
-                            <Box component="img" src="./images/Landing_page_Design.png" sx={{ width: '60%', height: '60%', objectFit: 'cover', opacity: '0.8', }} />
-                            <Box sx={{ position: 'absolute', bottom: 0, width: 1, p: 3, textAlign: 'center' }}>
-                                <Typography variant="h4">Digital</Typography>
-                            </Box>
-                            <Box className="pic-dec-bl" sx={{
-                                position: 'absolute', width: '1.5rem', height: '2rem', bottom: '0.5rem', left: '0.5rem', borderLeft: 4, borderBottom: 4, borderColor: "transparent",
-                                transition: 'all 0.3s ease',
-                            }}></Box>
-                            <Box className="pic-dec-tr" sx={{
-                                position: 'absolute', width: '1.5rem', height: '2rem', top: '0.5rem', right: '0.5rem', borderRight: 4, borderTop: 4, borderColor: "transparent",
-                                transition: 'all 0.3s ease',
-                            }}></Box>
-
-                        </Box>
-                    </Grid>
-                    <Grid item xs={3}>
-                        <Box sx={{
-                            position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', height: '20rem', backgroundColor: alpha('#6962B2', 0.25), transition: 'all 0.1s ease', backdropFilter: "blur(5px)", '&:hover': {
-                                transform: 'scale(0.96)', filter: 'brightness(1.2)', border: theme => `1px solid ${theme.palette.primary.main}`,
-                            }, '&:hover .pic-dec-bl': { bottom: '-1rem', left: '-1rem', borderColor: theme => ` ${theme.palette.primary.main}` },
-                            '&:hover .pic-dec-tr': { top: '-1rem', right: '-1rem', borderColor: theme => ` ${theme.palette.primary.main}` },
-                        }}>
-                            <Box component="img" src="./images/Landing_page_Design.png" sx={{ width: '60%', height: '60%', objectFit: 'cover', opacity: '0.8', }} />
-                            <Box sx={{ position: 'absolute', bottom: 0, width: 1, p: 3, textAlign: 'center' }}>
-                                <Typography variant="h4">Digital</Typography>
-                            </Box>
-                            <Box className="pic-dec-bl" sx={{
-                                position: 'absolute', width: '1.5rem', height: '2rem', bottom: '0.5rem', left: '0.5rem', borderLeft: 4, borderBottom: 4, borderColor: "transparent",
-                                transition: 'all 0.3s ease',
-                            }}></Box>
-                            <Box className="pic-dec-tr" sx={{
-                                position: 'absolute', width: '1.5rem', height: '2rem', top: '0.5rem', right: '0.5rem', borderRight: 4, borderTop: 4, borderColor: "transparent",
+                                position: 'absolute', width: '1.5rem', height: '2rem', top: '0.5rem', right: '0.5rem', borderRight: 4, borderTop: 4, borderColor: theme => ` ${theme.palette.divider}`,
                                 transition: 'all 0.3s ease',
                             }}></Box>
 

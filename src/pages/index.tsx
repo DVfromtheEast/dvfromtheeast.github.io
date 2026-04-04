@@ -11,7 +11,7 @@ import DVAgentChat from '../components/DvAgent';
 
 
 const IndexPage: NextPage = () => {
-  const [activeSection, setActiveSection] = useState<'home' | 'about' | 'works' | 'skills' | 'contact'>('home')
+  const [activeSection, setActiveSection] = useState<'home' | 'about' | 'works' | 'abilities' | 'contact'>('home')
 
   const renderSection = () => {
     switch (activeSection) {
@@ -19,7 +19,7 @@ const IndexPage: NextPage = () => {
         return <Bio />
       case 'works':
         return <Works />
-      case 'skills':
+      case 'abilities':
         return <Skills />
       case 'contact':
         return <Contact />

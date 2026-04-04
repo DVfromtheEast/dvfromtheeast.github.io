@@ -1,5 +1,6 @@
 import { createTheme } from '@mui/material/styles';
 import '@fontsource-variable/noto-sans';
+import { alpha } from '@mui/material/styles';
 
 const DVTheme = (mode: 'light' | 'dark') =>
   createTheme({
@@ -17,6 +18,7 @@ const DVTheme = (mode: 'light' | 'dark') =>
         primary: mode === 'dark' ? '#fafafa' : '#020216',
         secondary: mode === 'dark' ? '#d1d1e5' : '#25233a',
       },
+      divider: alpha('#906CD2', 0.5),
     },
     typography: {
       h1: {

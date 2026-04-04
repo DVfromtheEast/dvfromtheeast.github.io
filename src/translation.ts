@@ -8,7 +8,7 @@ export const translations = {
       navigation: 'Works',
     },
     skills: {
-      navigation: 'Skills',
+      navigation: 'Abilities',
     },
     contact: { navigation: 'Contact' },
   },
