@@ -17,9 +17,16 @@ type Skill = {
     label: LocalizedString;
     description: LocalizedString;
 };
+type Tool = {
+    id: string;
+    label: string;
+    icon: string;
+    description: LocalizedString;
+};
 
 type SkillsData = {
     skills: Skill[];
+    tools: Tool[];
 };
 
 export default function Skills() {
@@ -75,17 +82,7 @@ export default function Skills() {
     if (!data) return null;
     const skills = data.skills;
     const active = skills[activeIndex];
-
-    const visibleCount = 5;
-    const half = Math.floor(visibleCount / 2);
-
-    const getVisibleSkills = () => {
-        return Array.from({ length: visibleCount }, (_, i) => {
-            const index = (activeIndex - half + i + skills.length) % skills.length;
-            return { skill: skills[index], index, offset: i - half };
-        });
-    };
-
+    const tools = data.tools;
 
     return (
         <Box sx={{ width: '70%', mx: "auto", px: 2 }}>
@@ -100,59 +97,79 @@ export default function Skills() {
                     </Typography>
                 </Box>
                 {/* Sections */}
-                <Box sx={{ display: 'grid', gridTemplateColumns: '80% 1fr', gap: 4, width: 1, alignItems: 'flex-start' }}>
-                    <Box sx={{ position: 'relative', height: '30rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Box sx={{ display: 'grid', gridTemplateColumns: '80% 1fr', gap: 3, width: 1, alignItems: 'flex-start' }}>
+                    <Box sx={{ height: '40rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <Box sx={{
                             width: 1,
                             willChange: 'transform', display: 'grid',
                             gridTemplateColumns: '60% 1fr',
                             justifyContent: 'stretch',
                             justifyItems: 'stretch',
-                            alignItems: 'center',
+                            alignItems: 'start',
                             alignContent: 'center',
+                            position: 'relative',
                         }}>
-                            <Box sx={{
-                                display: 'flex',
-                                flexDirection: 'column',
-                                alignItems: 'flex-start',
-                                gap: '2rem',
-                                position: 'relative',
-                                width: 1,
-                            }}>{getVisibleSkills().map(({ skill, index, offset }) => {
-                                const isActive = offset === 0;
-                                const isAdjacent = Math.abs(offset) === 1;
-                                return (
-                                    <Box
-                                        key={skill.id}
-                                        onClick={() => handleSelect(index)}
-                                        sx={{
-                                            cursor: 'pointer',
-                                            transition: 'all 0.3s ease',
-                                            width: 1, pl: isActive ? 2 : 0, borderLeft: isActive ? theme => `4px solid ${theme.palette.primary.main}` : 'none',
-                                            alignItems: 'center', display: 'flex',
-                                            opacity: isActive ? 1 : isAdjacent ? 0.6 : 0.3,
-                                            transform: `scale(${isActive ? 1 : isAdjacent ? 0.95 : 0.9})`,
-                                            height: isActive ? '8.5rem' : isAdjacent ? 'auto' : 'auto',
-                                            background: isActive ? theme => `linear-gradient(90deg,${theme.palette.primary.main}80, ${theme.palette.primary.main}40, ${theme.palette.primary.main}10)` : 'transparent',
-                                        }}
-                                    >
-                                        <Typography
-                                            variant={isActive ? 'h1' : isAdjacent ? 'h3' : 'h4'}
-                                            sx={{
-                                                fontWeight: isActive ? 700 : isAdjacent ? 600 : 500,
-                                                color: isActive ? 'primary.main' : isAdjacent ? 'text.primary' : 'text.secondary',
-                                                transition: 'all 0.3s ease',
-                                                width: 1,
-                                            }}
-                                        >
-                                            {skill.label[language]}
-                                        </Typography>
+                            <Box sx={{ position: 'absolute', width: 1, height: '8.5rem', mt: '17rem', top: 0, background: theme => `linear-gradient(90deg, ${theme.palette.primary.main}90, ${theme.palette.primary.main}45, ${theme.palette.primary.main}10)`, borderLeft: theme => `4px solid ${theme.palette.primary.main}` }} ></Box>
+                            {/* Clip window */}
+                            <Box
+                                onWheel={(e) => {
+                                    if (e.deltaY > 0) {
+                                        handleSelect(Math.min(activeIndex + 1, skills.length - 1));
+                                    } else {
+                                        handleSelect(Math.max(activeIndex - 1, 0));
+                                    }
+                                }}
+                                sx={{
+                                    overflow: 'hidden',
+                                    height: '40rem', // 5 items × ~8rem each
+                                    position: 'relative',
+                                    width: 1,
+                                }}>
 
-                                    </Box>
-
-                                );
-                            })}
-
+                                {/* Sliding list */}
+                                <Box sx={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    position: 'absolute',
+                                    width: 1,
+                                    transform: `translateY(calc(${2 - activeIndex} * 8.5rem))`,
+                                    transition: 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                                }}>
+                                    {skills.map((skill, index) => {
+                                        const offset = index - activeIndex;
+                                        const isActive = offset === 0;
+                                        const isAdjacent = Math.abs(offset) === 1;
+                                        return (
+                                            <Box
+                                                key={skill.id}
+                                                onClick={() => handleSelect(index)}
+                                                sx={{
+                                                    cursor: 'pointer',
+                                                    transition: 'all 0.3s ease',
+                                                    width: 1,
+                                                    pl: isActive ? 2 : 0,
+                                                    alignItems: 'center',
+                                                    display: 'flex',
+                                                    opacity: isActive ? 1 : isAdjacent ? 0.6 : 0.3,
+                                                    transform: `scale(${isActive ? 1 : isAdjacent ? 0.95 : 0.9})`,
+                                                    height: '8.5rem',
+                                                }}
+                                            >
+                                                <Typography
+                                                    variant={isActive ? 'h1' : isAdjacent ? 'h3' : 'h4'}
+                                                    sx={{
+                                                        fontWeight: isActive ? 700 : isAdjacent ? 600 : 500,
+                                                        color: isActive ? 'primary.contrastText' : isAdjacent ? 'text.primary' : 'text.secondary',
+                                                        transition: 'all 0.3s ease',
+                                                        width: 1,
+                                                    }}
+                                                >
+                                                    {skill.label[language]}
+                                                </Typography>
+                                            </Box>
+                                        );
+                                    })}
+                                </Box>
                             </Box>
                             <Box sx={{
                                 display: 'flex',
@@ -163,6 +180,7 @@ export default function Skills() {
                                 textAlign: 'right',
                                 borderLeft: theme => `1px solid ${theme.palette.divider}`,
                                 px: 2,
+                                mt: '17rem',
                                 height: '8.5rem',
                                 background: 'linear-gradient(90deg, rgba(144, 108, 210, 0.15), rgba(144, 108, 210, 0.15))',
                             }}>
@@ -174,12 +192,30 @@ export default function Skills() {
                                     {active.description[language]}
                                 </Typography>
                             </Box>
+
                         </Box>
+
                     </Box>
                     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
                         <Typography variant="subtitle1">
                             Softwares & Technologies
                         </Typography>
+                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                            {tools.map(tool => (
+                                <Box key={tool.id} sx={{ display: 'flex', flexDirection: 'row', gap: 2, alignItems: 'start' }}>
+                                    <Box
+                                        component="img"
+                                        src={tool.icon}
+                                        alt={tool.label}
+                                        sx={{ width: 32, height: 32, objectFit: 'contain' }}
+                                    />
+                                    <Box>
+                                        <Typography variant="body2" fontWeight={600}>{tool.label}</Typography>
+                                        <Typography variant="caption" color="text.secondary">{tool.description[language]}</Typography>
+                                    </Box>
+                                </Box>
+                            ))}
+                        </Box>
                     </Box>
                 </Box>
             </Box>
