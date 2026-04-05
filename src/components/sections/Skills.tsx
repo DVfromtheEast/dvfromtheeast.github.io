@@ -158,7 +158,7 @@ export default function Skills() {
                                                 <Typography
                                                     variant={isActive ? 'h1' : isAdjacent ? 'h3' : 'h4'}
                                                     sx={{
-                                                        fontWeight: isActive ? 700 : isAdjacent ? 600 : 500,
+                                                        fontWeight: isActive ? 600 : isAdjacent ? 600 : 500,
                                                         color: isActive ? 'primary.contrastText' : isAdjacent ? 'text.primary' : 'text.secondary',
                                                         transition: 'all 0.3s ease',
                                                         width: 1,
@@ -179,7 +179,7 @@ export default function Skills() {
                                 backdropFilter: "blur(5px)",
                                 textAlign: 'right',
                                 borderLeft: theme => `1px solid ${theme.palette.divider}`,
-                                px: 2,
+                                px: 3,
                                 mt: '17rem',
                                 height: '8.5rem',
                                 background: 'linear-gradient(90deg, rgba(144, 108, 210, 0.15), rgba(144, 108, 210, 0.15))',
