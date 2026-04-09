@@ -37,17 +37,16 @@ export default function Skills() {
     useEffect(() => {
         if (!data) return;
         intervalRef.current = setInterval(() => {
-            handleSelect(activeIndex + 1, data.skills.length);
+            setActiveIndex(prev => (prev + 1) % data.skills.length);
         }, 3000);
         return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
-    }, [data, activeIndex]);
+    }, [data]);
 
     function handleSelect(index: number, total: number) {
         if (intervalRef.current) clearInterval(intervalRef.current);
         const wrapped = (index + total) % total;
 
         if (index < 0 || index >= total) {
-            // animate to clone first, then silently jump to real item
             setActiveIndex(index < 0 ? -1 : total);
             setTimeout(() => {
                 setNoTransition(true);
@@ -57,7 +56,16 @@ export default function Skills() {
         } else {
             setActiveIndex(wrapped);
         }
+
+
     }
+    useEffect(() => {
+        if (!data) return;
+        intervalRef.current = setInterval(() => {
+            handleSelect(activeIndex + 1, data.skills.length);
+        }, 4000);
+        return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
+    }, [data, activeIndex]);
 
     if (loading) {
         return (
@@ -86,7 +94,7 @@ export default function Skills() {
     ];
 
     // cloned list index of the active item
-    const clonedActiveIndex = activeIndex + 2;
+    const clonedActiveIndex = Math.max(0, Math.min(activeIndex + 2, clonedSkills.length - 1));
 
     return (
         <Box sx={{ width: '70%', mx: "auto", px: 2 }}>
@@ -122,10 +130,6 @@ export default function Skills() {
                                 pointerEvents: 'none',
                             }} />
                             <Box
-                                onWheel={(e) => {
-                                    if (e.deltaY > 0) handleSelect(activeIndex + 1, total);
-                                    else handleSelect(activeIndex - 1, total);
-                                }}
                                 sx={{
                                     overflow: 'hidden',
                                     height: '40rem',
@@ -140,7 +144,7 @@ export default function Skills() {
                                     position: 'absolute',
                                     width: 1,
                                     transform: `translateY(calc(${2 - clonedActiveIndex} * 8.5rem))`,
-                                    transition: noTransition ? 'none' : 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                                    transition: noTransition ? 'none' : 'transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)',
                                 }}>
                                     {clonedSkills.map((skill, i) => {
                                         const pos = i - clonedActiveIndex;
@@ -157,7 +161,7 @@ export default function Skills() {
                                                     pl: isActive ? 2 : 0,
                                                     alignItems: 'center',
                                                     display: 'flex',
-                                                    opacity: isActive ? 1 : isAdjacent ? 0.6 : 0.3,
+                                                    opacity: isActive ? 1 : isAdjacent ? 0.9 : 0.3,
                                                     transform: `scale(${isActive ? 1 : isAdjacent ? 0.95 : 0.9})`,
                                                     height: '8.5rem',
                                                 }}
@@ -167,8 +171,11 @@ export default function Skills() {
                                                     sx={{
                                                         fontWeight: isActive ? 600 : 500,
                                                         color: isActive ? 'primary.contrastText' : isAdjacent ? 'text.primary' : 'text.secondary',
+                                                        '&:hover': { color: isActive ? 'primary.contrastText' : 'primary.main' },
                                                         transition: 'all 0.3s ease',
                                                         width: 1,
+                                                        userSelect: 'none',
+                                                        WebkitUserSelect: 'none',
                                                     }}
                                                 >
                                                     {skill.label[language]}

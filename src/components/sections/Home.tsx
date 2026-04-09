@@ -1,10 +1,13 @@
 import { Box, Typography } from '@mui/material'
-import { useRouter } from 'next/router'
 import { translations } from '../../translation'
 import { useLanguage } from '../../context/LanguageContext'
 import { TextTransition } from '../TextTransition'
 import DVButton from '../Button'
 import { useThemeMode } from '../../context/ThemeContext'
+
+type HomeProps = {
+  setActiveSection: (section: 'home' | 'about' | 'works' | 'work-details' | 'abilities' | 'contact') => void;
+}
 
 const bannerAssets = {
   dark: {
@@ -23,8 +26,8 @@ const bannerAssets = {
     layer4: "https://res.cloudinary.com/da7poid94/image/upload/v1775328959/day4_qlms7r.png",
   }
 }
-export default function Home() {
-  const router = useRouter()
+export default function Home({ setActiveSection }: HomeProps) {
+
   const { language, setLanguage } = useLanguage()
   const t = translations[language]
   const { mode } = useThemeMode()
@@ -34,8 +37,8 @@ export default function Home() {
 
   return (
     <Box sx={{ width: '70%', height: '100%' }}>
-      <Box sx={{ height: '100%', display: 'flex', flexDirection: 'row-reverse', gap: 3, alignItems: 'center', justifyContent: 'space-between' }}>
-        <div className="illustration">
+      <Box sx={{ height: '100%', display: 'flex', flexDirection: 'row-reverse', gap: 3, alignItems: 'center', justifyContent: 'space-between', userSelect: 'none', WebkitUserSelect: 'none' }}>
+        <Box className="illustration" sx={{ position: 'relative', width: '50%', height: 'auto' }}>
           <img className={`moon ${isLight ? 'moon_close' : ''}`} src="https://res.cloudinary.com/da7poid94/image/upload/v1775328962/moon_vcjvnk.png" alt="Moon" loading="lazy" />
           <img className={`sun ${isLight ? 'sun_open' : ''}`} src="https://res.cloudinary.com/da7poid94/image/upload/v1775328970/sun_falewt.png" alt="Sun" loading="lazy" />
           <img className="cloud1" src="https://res.cloudinary.com/da7poid94/image/upload/v1775328951/cloud1_q6ueai.png" alt="Cloud" loading="lazy" />
@@ -53,7 +56,7 @@ export default function Home() {
               />
             ))}
           </div>
-        </div>
+        </Box>
 
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'start', gap: 2, maxWidth: '26rem' }}>
           <TextTransition>
@@ -64,7 +67,7 @@ export default function Home() {
           <Typography variant="body1" sx={{ color: 'text.primary', mb: 2 }}>
             I love to make innovative and meaningful things.
           </Typography>
-          <DVButton onClick={() => router.push('/works')} >Check out my works</DVButton>
+          <DVButton onClick={() => setActiveSection('works')} >Check out my works</DVButton>
         </Box>
       </Box>
     </Box>

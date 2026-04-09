@@ -12,7 +12,7 @@ import DVAgentChat from '../components/DvAgent';
 
 
 const IndexPage: NextPage = () => {
-  const [activeSection, setActiveSection] = useState<'home' | 'about' | 'works' | 'work-details' | 'abilities' | 'contact'>(() => {
+  const [activeSection, setActiveSection] = useState<'home' | 'about' | 'works' | 'work-details' | "work-item" | 'abilities' | 'contact'>(() => {
     if (typeof window === 'undefined') return 'home'
     return (localStorage.getItem('activeSection') as typeof activeSection) || 'home'
   })
@@ -29,6 +29,9 @@ const IndexPage: NextPage = () => {
     setActiveCategory(id)
     localStorage.setItem('activeCategory', id)
   }
+  function handleWorkIdChange(id: string) {
+    localStorage.setItem('activeWorkId', id)
+  }
   const renderSection = () => {
     switch (activeSection) {
       case 'about':
@@ -36,13 +39,13 @@ const IndexPage: NextPage = () => {
       case 'works':
         return <Works setActiveSection={handleSectionChange} setActiveCategory={handleCategoryChange} />
       case 'work-details':
-        return <WorkDetails categoryId={activeCategory} setActiveSection={handleSectionChange} />
+        return <WorkDetails categoryId={activeCategory} setActiveSection={handleSectionChange} setActiveWorkId={handleWorkIdChange} />
       case 'abilities':
         return <Skills />
       case 'contact':
         return <Contact />
       default:
-        return <Home />
+        return <Home setActiveSection={handleSectionChange} />
     }
   }
 
@@ -51,9 +54,12 @@ const IndexPage: NextPage = () => {
       <Header activeSection={activeSection} setActiveSection={handleSectionChange} />
       <DVAgentChat />
       {renderSection()}
-      <div className="dec">
+      <Box sx={{
+        position: 'absolute', top: 0, right: 0, width: '50rem', height: 'auto', zIndex: -2, userSelect: 'none',
+        WebkitUserSelect: 'none', PointerEvents: 'none'
+      }}>
         <img src="https://res.cloudinary.com/da7poid94/image/upload/v1775329018/DV_BG_ekfaqh.svg" alt="DV BG" />
-      </div>
+      </Box>
     </Box>
   )
 }
