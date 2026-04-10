@@ -25,7 +25,7 @@ type WorksData = {
     categories: Category[];
 };
 type WorksProps = {
-    setActiveSection: (section: 'home' | 'about' | 'works' | 'work-details' | 'abilities' | 'contact') => void;
+    setActiveSection: (section: 'home' | 'about' | 'works' | 'work-details' | 'work-item' | 'abilities' | 'contact') => void;
     setActiveCategory: (id: string) => void;
 };
 function CategoryCard({

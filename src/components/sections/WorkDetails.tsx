@@ -7,7 +7,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 type WorkDetailsProps = {
     categoryId: string | null;
-    setActiveSection: (section: "home" | "about" | "works" | "work-details" | "work-item" | "abilities" | "contact") => void;
+    setActiveSection: (section: 'home' | 'about' | 'works' | 'work-details' | 'work-item' | 'abilities' | 'contact') => void;
     setActiveWorkId: (id: string) => void;
 };
 

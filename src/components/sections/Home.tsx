@@ -6,7 +6,7 @@ import DVButton from '../Button'
 import { useThemeMode } from '../../context/ThemeContext'
 
 type HomeProps = {
-  setActiveSection: (section: 'home' | 'about' | 'works' | 'work-details' | 'abilities' | 'contact') => void;
+  setActiveSection: (section: 'home' | 'about' | 'works' | 'work-details' | 'work-item' | 'abilities' | 'contact') => void;
 }
 
 const bannerAssets = {

@@ -8,11 +8,12 @@ import Works from '../components/sections/Works';
 import Skills from '../components/sections/Skills';
 import Contact from '../components/sections/Contact';
 import WorkDetails from '../components/sections/WorkDetails';
+import WorkItem from '../components/sections/WorkItem';
 import DVAgentChat from '../components/DvAgent';
 
 
 const IndexPage: NextPage = () => {
-  const [activeSection, setActiveSection] = useState<'home' | 'about' | 'works' | 'work-details' | "work-item" | 'abilities' | 'contact'>(() => {
+  const [activeSection, setActiveSection] = useState<'home' | 'about' | 'works' | 'work-details' | 'work-item' | 'abilities' | 'contact'>(() => {
     if (typeof window === 'undefined') return 'home'
     return (localStorage.getItem('activeSection') as typeof activeSection) || 'home'
   })
@@ -20,6 +21,11 @@ const IndexPage: NextPage = () => {
     if (typeof window === 'undefined') return null
     return localStorage.getItem('activeCategory') || null
   })
+  const [activeWorkId, setActiveWorkId] = useState<string | null>(() => {
+    if (typeof window === 'undefined') return null
+    return localStorage.getItem('activeWorkId') || null
+  })
+
   function handleSectionChange(section: typeof activeSection) {
     setActiveSection(section)
     localStorage.setItem('activeSection', section)
@@ -30,6 +36,7 @@ const IndexPage: NextPage = () => {
     localStorage.setItem('activeCategory', id)
   }
   function handleWorkIdChange(id: string) {
+    setActiveWorkId(id)
     localStorage.setItem('activeWorkId', id)
   }
   const renderSection = () => {
@@ -40,6 +47,8 @@ const IndexPage: NextPage = () => {
         return <Works setActiveSection={handleSectionChange} setActiveCategory={handleCategoryChange} />
       case 'work-details':
         return <WorkDetails categoryId={activeCategory} setActiveSection={handleSectionChange} setActiveWorkId={handleWorkIdChange} />
+      case 'work-item':
+        return <WorkItem workId={activeWorkId} categoryId={activeCategory} setActiveSection={handleSectionChange} />
       case 'abilities':
         return <Skills />
       case 'contact':
