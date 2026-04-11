@@ -63,9 +63,9 @@ function Header({ activeSection, setActiveSection }: HeaderProps) {
         </Typography>
 
         <Typography onClick={() => setActiveSection('works')} sx={{
-          cursor: 'pointer', py: 2, color: activeSection === 'works' || activeSection === 'work-details'
+          cursor: 'pointer', py: 2, color: activeSection === 'works' || activeSection === 'work-details' || activeSection === 'work-item'
             ? 'primary.main'
-            : 'text.primary', background: activeSection === 'works' || activeSection === 'work-details'
+            : 'text.primary', background: activeSection === 'works' || activeSection === 'work-details' || activeSection === 'work-item'
               ? `radial-gradient(
       60% 60% at 50% 0%,
       rgba(86, 219, 35, 0.25) 0%,

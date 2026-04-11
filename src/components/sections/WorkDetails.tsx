@@ -6,26 +6,33 @@ import { useLanguage } from "../../context/LanguageContext";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 
+
+type WorkDetailsProps = {
+    workId: string | null;
+    categoryId: string | null;
+    setActiveSection: (section: "home" | "about" | "works" | "work-details" | "work-item" | "abilities" | "contact") => void;
+};
+
 const API_URL = process.env.NEXT_PUBLIC_AGENT_API_URL?.replace("/chat", "") || "http://localhost:3001";
 
 type LocalizedString = { en: string; vi: string; de: string; };
 
 type ContentBlock =
-    | { type: "media"; thumbnail: string; cover: string }
-    | { type: "text"; value: LocalizedString }
+    | { type: "text"; title: LocalizedString; subtitle: LocalizedString; value: LocalizedString }
     | { type: "image"; url: string; caption: LocalizedString };
 
 type Work = {
     id: string;
-    title: LocalizedString;
+    title: string;
     description: LocalizedString;
     tags: string[];
     cover: string;
+    intro: LocalizedString;
     content: ContentBlock[];
-    // links: {
-    //     live: string | null;
-    //     case_study: string | null;
-    // };
+    links: {
+        live: string | null;
+        case_study: string | null;
+    };
 };
 
 type Category = {
@@ -38,11 +45,7 @@ type WorksData = {
     categories: Category[];
 };
 
-type WorkDetailsProps = {
-    workId: string | null;
-    categoryId: string | null;
-    setActiveSection: (section: "home" | "about" | "works" | "work-details" | "work-item" | "abilities" | "contact") => void;
-};
+
 
 export default function WorkDetails({ workId, categoryId, setActiveSection }: WorkDetailsProps) {
     const { language } = useLanguage();
@@ -80,11 +83,10 @@ export default function WorkDetails({ workId, categoryId, setActiveSection }: Wo
 
     if (!work) return null;
 
-    const media = work.content.find(b => b.type === "media") as { type: "media"; thumbnail: string; cover: string } | undefined;
 
     return (
         <Box sx={{ width: "70%", mx: "auto", px: 2 }}>
-            <Box sx={{ display: "flex", flexDirection: "column", gap: 4, py: 6 }}>
+            <Box sx={{ display: "flex", flexDirection: "column", gap: 6, py: 6 }}>
                 {/* Back button */}
                 <Box
                     onClick={() => setActiveSection("work-item")}
@@ -99,39 +101,45 @@ export default function WorkDetails({ workId, categoryId, setActiveSection }: Wo
                     <ArrowBackIcon fontSize="small" />
                     <Typography variant="body2">Back</Typography>
                 </Box>
+                {/* Title + Cover + meta */}
+                <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
 
-                {/* Cover */}
-                <Box
-                    component="img"
-                    src={`${work.cover}`}
-                    alt={work.title[language]}
-                    sx={{ width: "100%", height: "24rem", objectFit: "cover", borderRadius: 1 }}
-                />
+                    <Typography variant="body1" color="text.primary">
+                        {work.intro[language]}
+                    </Typography>
+                    <Box
+                        component="img"
+                        src={`${work.cover}`}
+                        alt={work.title[language]}
+                        sx={{ width: 1, height: "auto", objectFit: "cover" }}
+                    />
+                    <Typography variant="h2" fontWeight={700}>{work.title}</Typography>
 
-
-                {/* Title + meta */}
-                <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-                    <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                        <Typography variant="h2" fontWeight={700}>{work.title[language]}</Typography>
-                    </Box>
-                    <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5, mt: 1 }}>
+                    <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
                         {work.tags.map(tag => (
-                            <Chip key={tag} label={tag} size="small" sx={{ fontSize: 11 }} />
+                            <Chip key={tag} label={tag} size="medium" sx={{ textTransform: "uppercase", }} />
                         ))}
                     </Box>
+
+                    <Box sx={{ borderTop: theme => `1px solid ${theme.palette.divider}` }} />
                 </Box>
-
-                <Box sx={{ borderTop: theme => `1px solid ${theme.palette.divider}` }} />
-
                 {/* Content blocks */}
-                <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
+                <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
                     {work.content.map((block, i) => {
-                        if (block.type === "media") return null;
-
                         if (block.type === "text") return (
-                            <Typography key={i} variant="body1" color="text.primary" sx={{ lineHeight: 1.8 }}>
-                                {block.value[language]}
-                            </Typography>
+                            <Box key={i}>
+                                {block.subtitle && (
+                                    <Typography variant="body2" color="text.secondary" fontWeight={600}>
+                                        {block.subtitle[language]}
+                                    </Typography>
+                                )}
+                                <Typography variant="h4" color="text.primary">
+                                    {block.title[language]}
+                                </Typography>
+                                <Typography variant="body1" color="text.primary">
+                                    {block.value[language]}
+                                </Typography>
+                            </Box>
                         );
 
                         if (block.type === "image") return (
@@ -140,13 +148,8 @@ export default function WorkDetails({ workId, categoryId, setActiveSection }: Wo
                                     component="img"
                                     src={block.url}
                                     alt={block.caption[language]}
-                                    sx={{ width: "100%", borderRadius: 1, objectFit: "cover" }}
+                                    sx={{ width: 1, borderRadius: 1, objectFit: "cover" }}
                                 />
-                                {block.caption && (
-                                    <Typography variant="caption" color="text.secondary" sx={{ display: "block", mt: 1, textAlign: "center" }}>
-                                        {block.caption[language]}
-                                    </Typography>
-                                )}
                             </Box>
                         );
 

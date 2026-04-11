@@ -65,7 +65,7 @@ const IndexPage: NextPage = () => {
       {renderSection()}
       <Box sx={{
         position: 'absolute', top: 0, right: 0, width: '50rem', height: 'auto', zIndex: -2, userSelect: 'none',
-        WebkitUserSelect: 'none', PointerEvents: 'none'
+        WebkitUserSelect: 'none', pointerEvents: 'none'
       }}>
         <img src="https://res.cloudinary.com/da7poid94/image/upload/v1775329018/DVBG_ekfaqh.svg" alt="DVBG" />
       </Box>

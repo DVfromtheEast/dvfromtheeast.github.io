@@ -946,13 +946,8 @@ input:checked + .slider:before {
     height: 100%;
     transition: var(--smooth);
   }
-  .tag p {
-    font-size: 1rem;
-    transition: 0.2s ease-in;
-  }
   .card button {
     position: absolute;
-    opacity: 100;
     display: inline-block;
     bottom: 3rem;
     opacity: 0;
@@ -967,11 +962,6 @@ input:checked + .slider:before {
     opacity: 100;
     transition: 0.3s ease-out;
     transform: translateY(-1.25rem);
-  }
-  .card:hover .tag p {
-    opacity: 0;
-    transition: 0.15s ease-out;
-    transform: translateX(8rem);
   }
 
   /* Branding */

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Box, Typography, Skeleton, Chip, alpha } from "@mui/material";
 import { useLanguage } from "../../context/LanguageContext";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import DVButton from "../Button";
 
 type WorkItemProps = {
     categoryId: string | null;
@@ -20,7 +21,6 @@ type LocalizedString = {
 };
 
 type ContentBlock =
-    | { type: "media"; thumbnail: string; cover: string }
     | { type: "text"; value: LocalizedString }
     | { type: "image"; url: string; caption: LocalizedString };
 
@@ -60,7 +60,7 @@ function WorkCard({
     language: string;
     onClick: (id: string) => void;
 }) {
-    const media = work.content.find(b => b.type === "media") as { type: "media"; thumbnail: string; cover: string } | undefined;
+
 
     return (
         <Box
@@ -73,14 +73,44 @@ function WorkCard({
                 cursor: "pointer",
                 transition: "all 0.2s ease",
                 backdropFilter: "blur(4px)",
-                backgroundColor: alpha("#906CD2", 0.3),
+                backgroundColor: 'background.paper',
+                // backgroundColor: alpha("#906CD2", 0.3),
+                border: theme => `1px solid ${theme.palette.divider}`,
                 overflow: "hidden",
                 "&:hover": {
                     transform: "scale(0.97)",
                     border: theme => `1px solid ${theme.palette.primary.main}`,
                 },
+                "&:hover .tags": {
+                    opacity: 0,
+                    transform: "translateX(8rem)",
+                    transition: "all 0.2s ease-out",
+                },
+                "&:hover .details": {
+
+                    opacity: 1,
+                    transform: "translateY(-1.25rem)",
+                    transition: "all 0.2s ease-in",
+                }
             }}
         >
+            {/* Info */}
+            <Box sx={{
+                w: 1,
+                p: 4, display: "flex", flexDirection: "column", gap: 4, alignItems: "flex-start",
+            }}>
+                <Typography variant="h3">{work.title}</Typography>
+                <Typography variant="body2" sx={{ maxWidth: '28rem', color: 'text.secondary' }}>{work.description[language]}</Typography>
+                <Box className="tags" sx={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: 1 }}>
+                    {work.tags.map(tag => (
+                        <Chip key={tag} label={tag} size="medium" sx={{ textTransform: "uppercase", }} />
+                    ))}
+                </Box>
+                <Box className="details" sx={{ position: 'absolute', bottom: '4rem', opacity: 0 }}>
+                    <DVButton customVariant="outline">View Details</DVButton>
+                </Box>
+            </Box>
+
             {/* Thumbnail */}
             <Box
                 component="img"
@@ -88,22 +118,6 @@ function WorkCard({
                 alt={`${work.title}`}
                 sx={{ width: 'auto', height: "100%", objectFit: "cover", pointerEvents: "none", WebkitTouchCallout: "none" }}
             />
-
-            {/* Info */}
-            <Box sx={{
-                w: 1,
-                p: 4, display: "flex", flexDirection: "column", gap: 4
-            }}>
-                <Typography variant="h4">{work.title}</Typography>
-
-                <Typography variant="body2" sx={{ maxWidth: '28rem', color: 'text.secondary' }}>{work.description[language]}</Typography>
-                <Box sx={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: 1 }}>
-                    {work.tags.map(tag => (
-                        <Chip key={tag} label={tag} size="medium" sx={{ textTransform: "uppercase" }} />
-                    ))}
-                </Box>
-
-            </Box>
         </Box>
     );
 }

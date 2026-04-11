@@ -12,7 +12,7 @@ import {
     useTheme,
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
-import SmartToyTwoToneIcon from '@mui/icons-material/SmartToyTwoTone';
+import PestControlTwoToneIcon from '@mui/icons-material/PestControlTwoTone';
 import { alpha } from '@mui/material/styles'
 
 type ChatMessage = {
@@ -125,7 +125,7 @@ export default function DVAgentChat() {
                     ><Box sx={{ mt: "auto" }} />
                         {messages.length === 0 && (
                             <Box sx={{ textAlign: "center", my: 4 }}>
-                                <SmartToyTwoToneIcon sx={{ fontSize: 40, color: "text.secondary", mb: 1 }} />
+                                <PestControlTwoToneIcon sx={{ fontSize: 40, color: "text.secondary", mb: 1 }} />
                                 <Typography variant="body2" sx={{ backgroundColor: "primary.paper", color: "text.secondary", p: 1 }}>
                                     Ask me anything about DV!
                                 </Typography>
@@ -199,7 +199,7 @@ export default function DVAgentChat() {
                 customVariant="outline"
                 onClick={() => setOpen((prev) => !prev)}
             >
-                <SmartToyTwoToneIcon sx={{ fontSize: 16 }} />
+                <PestControlTwoToneIcon sx={{ fontSize: 16 }} />
             </DVButton>
         </Box>
     );
