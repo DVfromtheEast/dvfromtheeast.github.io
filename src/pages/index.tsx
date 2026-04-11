@@ -7,13 +7,13 @@ import Bio from '../components/sections/Bio';
 import Works from '../components/sections/Works';
 import Skills from '../components/sections/Skills';
 import Contact from '../components/sections/Contact';
-import WorkDetails from '../components/sections/WorkDetails';
 import WorkItem from '../components/sections/WorkItem';
+import WorkDetails from '../components/sections/WorkDetails';
 import DVAgentChat from '../components/DvAgent';
 
 
 const IndexPage: NextPage = () => {
-  const [activeSection, setActiveSection] = useState<'home' | 'about' | 'works' | 'work-details' | 'work-item' | 'abilities' | 'contact'>(() => {
+  const [activeSection, setActiveSection] = useState<'home' | 'about' | 'works' | 'work-item' | 'work-details' | 'abilities' | 'contact'>(() => {
     if (typeof window === 'undefined') return 'home'
     return (localStorage.getItem('activeSection') as typeof activeSection) || 'home'
   })
@@ -45,10 +45,10 @@ const IndexPage: NextPage = () => {
         return <Bio />
       case 'works':
         return <Works setActiveSection={handleSectionChange} setActiveCategory={handleCategoryChange} />
-      case 'work-details':
-        return <WorkDetails categoryId={activeCategory} setActiveSection={handleSectionChange} setActiveWorkId={handleWorkIdChange} />
       case 'work-item':
-        return <WorkItem workId={activeWorkId} categoryId={activeCategory} setActiveSection={handleSectionChange} />
+        return <WorkItem categoryId={activeCategory} setActiveSection={handleSectionChange} setActiveWorkId={handleWorkIdChange} />
+      case 'work-details':
+        return <WorkDetails workId={activeWorkId} categoryId={activeCategory} setActiveSection={handleSectionChange} />
       case 'abilities':
         return <Skills />
       case 'contact':
@@ -67,7 +67,7 @@ const IndexPage: NextPage = () => {
         position: 'absolute', top: 0, right: 0, width: '50rem', height: 'auto', zIndex: -2, userSelect: 'none',
         WebkitUserSelect: 'none', PointerEvents: 'none'
       }}>
-        <img src="https://res.cloudinary.com/da7poid94/image/upload/v1775329018/DV_BG_ekfaqh.svg" alt="DV BG" />
+        <img src="https://res.cloudinary.com/da7poid94/image/upload/v1775329018/DVBG_ekfaqh.svg" alt="DVBG" />
       </Box>
     </Box>
   )

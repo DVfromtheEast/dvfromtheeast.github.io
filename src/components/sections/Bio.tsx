@@ -120,7 +120,6 @@ export default function Bio() {
                                 <Typography variant="overline" color="text.secondary" fontWeight={600}>
                                     {section.title}
                                 </Typography>
-                                {/* Render contact links differently */}
                                 {section.title === "Get In Touch" ? (
                                     <Typography variant="body1" sx={{ mt: 1, lineHeight: 1.8 }}>
                                         {section.content.split("reach out").map((part, i, arr) => (

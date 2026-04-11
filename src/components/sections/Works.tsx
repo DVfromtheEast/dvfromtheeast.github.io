@@ -25,7 +25,7 @@ type WorksData = {
     categories: Category[];
 };
 type WorksProps = {
-    setActiveSection: (section: 'home' | 'about' | 'works' | 'work-details' | 'work-item' | 'abilities' | 'contact') => void;
+    setActiveSection: (section: 'home' | 'about' | 'works' | 'work-item' | 'work-details' | 'abilities' | 'contact') => void;
     setActiveCategory: (id: string) => void;
 };
 function CategoryCard({
@@ -42,21 +42,25 @@ function CategoryCard({
             onClick={() => onClick(category.id)}
             sx={{
                 cursor: "pointer",
-                position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', height: 'auto', backgroundColor: theme => alpha(theme.palette.background.paper, 0.85), transition: 'all 0.2s ease', backdropFilter: "blur(5px)", p: 3.5, border: theme => `1px solid ${theme.palette.divider}`, '&:hover': {
-                    transform: 'scale(0.96)', filter: 'brightness(1.2)', border: theme => `1px solid ${theme.palette.primary.main}`,
-                }, '&:hover .pic-dec-bl': { bottom: '-1rem', left: '-1rem', borderColor: theme => ` ${theme.palette.primary.main}` },
+                position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', height: 'auto', background: 'linear-gradient(180deg, #3db20f2f 0%, #3db20fdd 100%)', transition: 'all 0.2s ease', backdropFilter: "blur(4px)", p: 3.5, border: theme => `1px solid ${theme.palette.primary.main}`,
+                '&:hover': {
+                    transform: 'scale(0.96)', background: 'none', border: theme => `1px solid ${theme.palette.divider}`,
+                },
+                '&:hover .pic': { mixBlendMode: 'normal', transform: 'scale(0.96)', },
+                '&:hover .text': { color: 'primary.main' },
+                '&:hover .pic-dec-bl': { bottom: '-1rem', left: '-1rem', borderColor: theme => ` ${theme.palette.primary.main}` },
                 '&:hover .pic-dec-tr': { top: '-1rem', right: '-1rem', borderColor: theme => ` ${theme.palette.primary.main}` },
             }}>
-            <Box component="img" src={category.thumbnail} alt={category.label[language]} sx={{ width: '100%', height: 'auto', objectFit: 'cover', opacity: '0.8', }} />
+            <Box component="img" className="pic" src={category.thumbnail} alt={category.label[language]} sx={{ width: '100%', height: 'auto', objectFit: 'cover', mixBlendMode: 'luminosity', p: 3 }} />
             <Box sx={{ width: 1, textAlign: 'center', py: 4 }}>
-                <Typography variant="h4" sx={{ whiteSpace: 'nowrap' }}>{category.label[language]}</Typography>
+                <Typography variant="h4" className="text" sx={{ whiteSpace: 'nowrap', color: 'primary.contrastText' }}>{category.label[language]}</Typography>
             </Box>
             <Box className="pic-dec-bl" sx={{
-                position: 'absolute', width: '1.5rem', height: '2rem', bottom: '0.5rem', left: '0.5rem', borderLeft: 4, borderBottom: 4, borderColor: theme => ` ${theme.palette.divider}`,
+                position: 'absolute', width: '1.5rem', height: '2rem', bottom: '0.5rem', left: '0.5rem', borderLeft: 4, borderBottom: 4, borderColor: theme => alpha(theme.palette.primary.contrastText, 0.5),
                 transition: 'all 0.3s ease',
             }}></Box>
             <Box className="pic-dec-tr" sx={{
-                position: 'absolute', width: '1.5rem', height: '2rem', top: '0.5rem', right: '0.5rem', borderRight: 4, borderTop: 4, borderColor: theme => ` ${theme.palette.divider}`,
+                position: 'absolute', width: '1.5rem', height: '2rem', top: '0.5rem', right: '0.5rem', borderRight: 4, borderTop: 4, borderColor: theme => alpha(theme.palette.primary.contrastText, 0.5),
                 transition: 'all 0.3s ease',
             }}></Box>
 
@@ -86,7 +90,7 @@ export default function Works({ setActiveSection, setActiveCategory }: WorksProp
 
     function handleCategoryClick(id: string) {
         setActiveCategory(id);
-        setActiveSection('work-details');
+        setActiveSection('work-item');
     }
 
     if (loading) {

@@ -683,27 +683,6 @@ input:checked + .slider:before {
 }
 
 /* Projects */
-.work_cards {
-  position: relative;
-  max-width: 1040px;
-  max-height: fit-content;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-}
-.card {
-  border-radius: 8px;
-  height: fit-content;
-  width: 96%;
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
-  text-decoration: none;
-  color: var(--onsurface);
-  background-color: var(--field);
-  overflow: hidden;
-}
 .card_text {
   display: flex;
   gap: 1.25rem;
@@ -718,31 +697,6 @@ input:checked + .slider:before {
   gap: 0.5rem;
   justify-content: flex-start;
   align-items: center;
-}
-.card_title img {
-  width: 2.5rem;
-}
-.card_text p {
-  font-weight: 300;
-}
-.tag {
-  display: inline-flex;
-  align-items: center;
-}
-.tag p {
-  font-size: 0.75rem;
-  margin-right: 0.75rem;
-  border-radius: 4px;
-  padding: 0.3rem 1rem;
-  background-color: rgba(255, 255, 255, 0.5);
-  color: var(--onsurface);
-  text-transform: uppercase;
-  width: fit-content;
-}
-.card_img {
-  width: 100%;
-  pointer-events: none;
-  -webkit-touch-callout: none;
 }
 .card button {
   display: none;
@@ -972,27 +926,12 @@ input:checked + .slider:before {
     height: 4.5rem;
   }
   /* Projects*/
-  .work_cards {
-    gap: 2rem;
-  }
-  .card {
-    position: relative;
-    flex-direction: row;
-    transition: var(--smooth);
-  }
   .card:nth-child(even) {
     flex-direction: row-reverse;
   }
   .card_text {
     width: auto;
     gap: 2rem;
-  }
-  .card_title {
-    max-height: 3.75rem;
-    gap: 1rem;
-  }
-  .card_title img {
-    width: 3.5rem;
   }
   .card_text {
     padding: 3rem 2.5rem 3rem 2.5rem;
@@ -1021,10 +960,6 @@ input:checked + .slider:before {
   }
   .card button:hover {
     background-color: rgba(255, 255, 255, 0.2);
-    transition: var(--smooth);
-  }
-  .card:hover {
-    transform: scale(0.98);
     transition: var(--smooth);
   }
   .card:hover button {

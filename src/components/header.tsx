@@ -8,7 +8,7 @@ import { useThemeMode } from '../context/ThemeContext'
 import { useLanguage } from '../context/LanguageContext'
 import { Language } from '../context/LanguageContext'
 
-type Section = 'home' | 'about' | 'works' | 'work-details' | 'work-item' | 'abilities' | 'contact';
+type Section = 'home' | 'about' | 'works' | 'work-item' | 'work-details' | 'abilities' | 'contact';
 type HeaderProps = {
   activeSection: Section
   setActiveSection: (section: Section) => void

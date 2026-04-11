@@ -1,23 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Box, Typography, Skeleton, Chip, alpha } from "@mui/material";
+import { Box, Typography, Skeleton, Chip } from "@mui/material";
 import { useLanguage } from "../../context/LanguageContext";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-
-type WorkDetailsProps = {
-    categoryId: string | null;
-    setActiveSection: (section: 'home' | 'about' | 'works' | 'work-details' | 'work-item' | 'abilities' | 'contact') => void;
-    setActiveWorkId: (id: string) => void;
-};
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 
 const API_URL = process.env.NEXT_PUBLIC_AGENT_API_URL?.replace("/chat", "") || "http://localhost:3001";
 
-type LocalizedString = {
-    en: string;
-    vi: string;
-    de: string;
-};
+type LocalizedString = { en: string; vi: string; de: string; };
 
 type ContentBlock =
     | { type: "media"; thumbnail: string; cover: string }
@@ -28,20 +19,18 @@ type Work = {
     id: string;
     title: LocalizedString;
     description: LocalizedString;
-    tech: string[];
     tags: string[];
+    cover: string;
     content: ContentBlock[];
-    links: {
-        live: string | null;
-        case_study: string | null;
-    };
+    // links: {
+    //     live: string | null;
+    //     case_study: string | null;
+    // };
 };
 
 type Category = {
     id: string;
     label: LocalizedString;
-    description: LocalizedString;
-    thumbnail: string;
     works: Work[];
 };
 
@@ -49,133 +38,56 @@ type WorksData = {
     categories: Category[];
 };
 
-function WorkCard({
-    work,
-    language,
-    onClick,
-}: {
-    work: Work;
-    language: string;
-    onClick: (id: string) => void;
-}) {
-    const media = work.content.find(b => b.type === "media") as { type: "media"; thumbnail: string; cover: string } | undefined;
+type WorkDetailsProps = {
+    workId: string | null;
+    categoryId: string | null;
+    setActiveSection: (section: "home" | "about" | "works" | "work-details" | "work-item" | "abilities" | "contact") => void;
+};
 
-    return (
-        <Box
-            onClick={() => onClick(work.id)}
-            sx={{
-                position: "relative",
-                display: "flex",
-                flexDirection: "column",
-                cursor: "pointer",
-                transition: "all 0.2s ease",
-                backdropFilter: "blur(5px)",
-                backgroundColor: alpha("#906CD2", 0.1),
-                "&:hover": {
-                    transform: "scale(0.97)",
-                    filter: "brightness(1.2)",
-                    border: theme => `1px solid ${theme.palette.primary.main}`,
-                },
-                "&:hover .pic-dec-bl": {
-                    bottom: "-1rem",
-                    left: "-1rem",
-                    borderColor: theme => theme.palette.primary.main,
-                },
-                "&:hover .pic-dec-tr": {
-                    top: "-1rem",
-                    right: "-1rem",
-                    borderColor: theme => theme.palette.primary.main,
-                },
-            }}
-        >
-            {/* Thumbnail */}
-            {media && (
-                <Box
-                    component="img"
-                    src={media.thumbnail}
-                    alt={work.title[language]}
-                    sx={{ width: "100%", height: "12rem", objectFit: "cover", opacity: 0.85 }}
-                />
-            )}
-
-            {/* Info */}
-            <Box sx={{ p: 2, display: "flex", flexDirection: "column", gap: 1 }}>
-                <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <Typography variant="h5" fontWeight={600}>{work.title[language]}</Typography>
-                </Box>
-                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5, mt: 1 }}>
-                    {work.tags.map(tag => (
-                        <Chip key={tag} label={tag} size="small" sx={{ fontSize: 11 }} />
-                    ))}
-                </Box>
-            </Box>
-
-            {/* Corner decorations */}
-            <Box className="pic-dec-bl" sx={{
-                position: "absolute", width: "1.5rem", height: "2rem",
-                bottom: "0.5rem", left: "0.5rem",
-                borderLeft: 4, borderBottom: 4,
-                borderColor: theme => theme.palette.divider,
-                transition: "all 0.3s ease",
-            }} />
-            <Box className="pic-dec-tr" sx={{
-                position: "absolute", width: "1.5rem", height: "2rem",
-                top: "0.5rem", right: "0.5rem",
-                borderRight: 4, borderTop: 4,
-                borderColor: theme => theme.palette.divider,
-                transition: "all 0.3s ease",
-            }} />
-        </Box>
-    );
-}
-
-export default function WorkDetails({ categoryId, setActiveSection, setActiveWorkId }: WorkDetailsProps) {
+export default function WorkDetails({ workId, categoryId, setActiveSection }: WorkDetailsProps) {
     const { language } = useLanguage();
-    const [category, setCategory] = useState<Category | null>(null);
+    const [work, setWork] = useState<Work | null>(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        async function fetchWorks() {
+        async function fetchWork() {
             try {
                 const res = await fetch(`${API_URL}/data/works`);
                 const data: WorksData = await res.json();
-                const found = data.categories.find(c => c.id === categoryId) || null;
-                setCategory(found);
+                const category = data.categories.find(c => c.id === categoryId);
+                const found = category?.works.find(w => w.id === workId) || null;
+                setWork(found);
             } catch (err) {
-                console.error("Failed to fetch works:", err);
+                console.error("Failed to fetch work:", err);
             } finally {
                 setLoading(false);
             }
         }
-        fetchWorks();
-    }, [categoryId]);
-
-    function handleWorkClick(id: string) {
-        setActiveWorkId(id);
-        setActiveSection("work-item");
-    }
+        fetchWork();
+    }, [workId, categoryId]);
 
     if (loading) {
         return (
-            <Box sx={{ width: "70%", mx: "auto", px: 2 }}>
-                <Skeleton variant="text" width="30%" height={48} sx={{ mb: 4 }} />
-                <Box sx={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 3 }}>
-                    {[...Array(3)].map((_, i) => (
-                        <Skeleton key={i} variant="rectangular" height="20rem" sx={{ borderRadius: 1 }} />
-                    ))}
-                </Box>
+            <Box sx={{ width: "70%", mx: "auto", px: 2, py: 6 }}>
+                <Skeleton variant="rectangular" height="24rem" sx={{ borderRadius: 1, mb: 4 }} />
+                <Skeleton variant="text" width="50%" height={48} sx={{ mb: 2 }} />
+                <Skeleton variant="text" width="100%" />
+                <Skeleton variant="text" width="100%" />
+                <Skeleton variant="text" width="80%" />
             </Box>
         );
     }
 
-    if (!category) return null;
+    if (!work) return null;
+
+    const media = work.content.find(b => b.type === "media") as { type: "media"; thumbnail: string; cover: string } | undefined;
 
     return (
         <Box sx={{ width: "70%", mx: "auto", px: 2 }}>
-            <Box sx={{ display: "flex", flexDirection: "column", gap: 6, py: 6 }}>
+            <Box sx={{ display: "flex", flexDirection: "column", gap: 4, py: 6 }}>
                 {/* Back button */}
                 <Box
-                    onClick={() => setActiveSection("works")}
+                    onClick={() => setActiveSection("work-item")}
                     sx={{
                         display: "flex", alignItems: "center", gap: 1,
                         cursor: "pointer", width: "fit-content",
@@ -188,23 +100,100 @@ export default function WorkDetails({ categoryId, setActiveSection, setActiveWor
                     <Typography variant="body2">Back</Typography>
                 </Box>
 
-                {/* Title */}
-                <Box sx={{ pl: 2, borderLeft: theme => `4px solid ${theme.palette.primary.main}` }}>
-                    <Typography variant="h2" fontWeight={700}>{category.label[language]}</Typography>
-                    <Typography variant="body2" color="text.secondary">{category.description[language]}</Typography>
+                {/* Cover */}
+                <Box
+                    component="img"
+                    src={`${work.cover}`}
+                    alt={work.title[language]}
+                    sx={{ width: "100%", height: "24rem", objectFit: "cover", borderRadius: 1 }}
+                />
+
+
+                {/* Title + meta */}
+                <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+                    <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                        <Typography variant="h2" fontWeight={700}>{work.title[language]}</Typography>
+                    </Box>
+                    <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5, mt: 1 }}>
+                        {work.tags.map(tag => (
+                            <Chip key={tag} label={tag} size="small" sx={{ fontSize: 11 }} />
+                        ))}
+                    </Box>
                 </Box>
 
-                {/* Work cards */}
-                <Box sx={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 3 }}>
-                    {category.works.map(work => (
-                        <WorkCard
-                            key={work.id}
-                            work={work}
-                            language={language}
-                            onClick={handleWorkClick}
-                        />
-                    ))}
+                <Box sx={{ borderTop: theme => `1px solid ${theme.palette.divider}` }} />
+
+                {/* Content blocks */}
+                <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
+                    {work.content.map((block, i) => {
+                        if (block.type === "media") return null;
+
+                        if (block.type === "text") return (
+                            <Typography key={i} variant="body1" color="text.primary" sx={{ lineHeight: 1.8 }}>
+                                {block.value[language]}
+                            </Typography>
+                        );
+
+                        if (block.type === "image") return (
+                            <Box key={i} component="figure" sx={{ m: 0 }}>
+                                <Box
+                                    component="img"
+                                    src={block.url}
+                                    alt={block.caption[language]}
+                                    sx={{ width: "100%", borderRadius: 1, objectFit: "cover" }}
+                                />
+                                {block.caption && (
+                                    <Typography variant="caption" color="text.secondary" sx={{ display: "block", mt: 1, textAlign: "center" }}>
+                                        {block.caption[language]}
+                                    </Typography>
+                                )}
+                            </Box>
+                        );
+
+                        return null;
+                    })}
                 </Box>
+
+                {/* Links */}
+                {/* {(work.links.live || work.links.case_study) && (
+                    <Box sx={{ display: "flex", gap: 2, mt: 2 }}>
+                        {work.links.live && (
+                            <Box
+                                component="a"
+                                href={work.links.live}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                sx={{
+                                    display: "flex", alignItems: "center", gap: 0.5,
+                                    color: "primary.main", textDecoration: "none",
+                                    fontSize: 14, transition: "all 0.15s ease",
+                                    "&:hover": { filter: "brightness(1.2)" },
+                                }}
+                            >
+                                <OpenInNewIcon fontSize="small" />
+                                Live
+                            </Box>
+                        )}
+                        {work.links.case_study && (
+                            <Box
+                                component="a"
+                                href={work.links.case_study}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                sx={{
+                                    display: "flex", alignItems: "center", gap: 0.5,
+                                    color: "primary.main", textDecoration: "none",
+                                    fontSize: 14, transition: "all 0.15s ease",
+                                    "&:hover": { filter: "brightness(1.2)" },
+                                }}
+                            >
+                                <OpenInNewIcon fontSize="small" />
+                                Case study
+                            </Box>
+                        )}
+                    </Box>
+                )} */}
             </Box>
-        </Box>);
+        </Box>
+    );
 }
