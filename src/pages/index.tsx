@@ -10,6 +10,7 @@ import Contact from '../components/sections/Contact';
 import WorkItem from '../components/sections/WorkItem';
 import WorkDetails from '../components/sections/WorkDetails';
 import DVAgentChat from '../components/DvAgent';
+import DVLocation from '../components/Location';
 
 
 const IndexPage: NextPage = () => {
@@ -62,6 +63,7 @@ const IndexPage: NextPage = () => {
     <Box sx={{ display: 'flex', flexDirection: 'column', width: 1, height: '100vh', alignItems: 'center', pb: 4 }}>
       <Header activeSection={activeSection} setActiveSection={handleSectionChange} />
       <DVAgentChat />
+      <DVLocation />
       {renderSection()}
       <Box sx={{
         position: 'absolute', top: 0, right: 0, width: '50rem', height: 'auto', zIndex: -2, userSelect: 'none',

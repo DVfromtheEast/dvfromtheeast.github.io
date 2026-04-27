@@ -939,30 +939,6 @@ input:checked + .slider:before {
   .card_text p {
     max-width: 26rem;
   }
-  .card_img {
-    display: flex;
-    align-items: center;
-    width: auto;
-    height: 100%;
-    transition: var(--smooth);
-  }
-  .card button {
-    position: absolute;
-    display: inline-block;
-    bottom: 3rem;
-    opacity: 0;
-    transition: 0.2s ease-in;
-  }
-  .card button:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    transition: var(--smooth);
-  }
-  .card:hover button {
-    display: inline-block;
-    opacity: 100;
-    transition: 0.3s ease-out;
-    transform: translateY(-1.25rem);
-  }
 
   /* Branding */
   .brand_list {
