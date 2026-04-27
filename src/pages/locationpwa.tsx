@@ -100,22 +100,18 @@ export default function LocationPwa() {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            gap: 3,
+            gap: 4,
             px: 4,
         }}>
-            <Typography variant="h4" fontWeight={700}>DV Location</Typography>
-
             {location && (
                 <Box sx={{ display: "flex", alignItems: "center", gap: 0.5, color: "primary.main" }}>
                     <LocationOnIcon fontSize="small" />
                     <Typography variant="body1" fontWeight={500}>{location}</Typography>
                 </Box>
             )}
-
             <Typography variant="body2" sx={{ color: statusColor, textAlign: "center" }}>
                 {status.message}
             </Typography>
-
             <DVButton onClick={toggle} sx={{ width: "fit-content", px: 4 }}>
                 {running ? "Stop" : "Start"}
             </DVButton>
