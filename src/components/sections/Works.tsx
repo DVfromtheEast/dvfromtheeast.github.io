@@ -42,7 +42,7 @@ function CategoryCard({
             onClick={() => onClick(category.id)}
             sx={{
                 cursor: "pointer",
-                position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', height: 'auto', background: 'linear-gradient(180deg, #3db20f1d 0%, #3db20fdf 100%)', transition: 'all 0.2s ease', backdropFilter: "blur(4px)", p: 3.5, border: theme => `1px solid ${theme.palette.primary.main}`,
+                position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', height: 'auto', background: 'linear-gradient(180deg, #1b0444 0%, #3db20fe8 100%)', transition: 'all 0.2s ease', backdropFilter: "blur(4px)", p: 3.5, border: theme => `1px solid ${theme.palette.primary.main}`,
                 '&:hover': {
                     transform: 'scale(0.96)', background: 'none', border: theme => `1px solid ${theme.palette.divider}`,
                 },
